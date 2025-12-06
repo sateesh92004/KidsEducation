@@ -1,0 +1,113 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+PIPFILE.lock
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.code-puppy-venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# Project-specific data files (user-generated)
+app/data/users_credentials.xlsx
+app/data/test_results.xlsx
+app/data/*.xlsx  # All Excel files generated during testing
+app/data/temp/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+logs/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# OS specific
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*_backup
+*_old
+
+# Cache directories
+.cache/
+*.cache
+
+# Node (if using any Node tools)
+node_modules/
+npm-debug.log
+
+# Distribution / packaging
+.Python
+build/
+*.egg-info/
+dist/
+
+# Unit test / coverage reports
+htmlcov/
+.pytest_cache/
+
+# Mac files
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.TemporaryItems
+
+# Windows
+$RECYCLE.BIN/
+ehthumbs.db
+desktop.ini

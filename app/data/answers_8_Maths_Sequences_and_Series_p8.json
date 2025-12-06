@@ -1,0 +1,133 @@
+{
+  "paper_number": 8,
+  "grade": "8",
+  "subject": "Maths",
+  "topic": "Sequences and Series",
+  "answers": [
+    {
+      "question_number": 1,
+      "correct_answer": "C",
+      "explanation": "To find the nth term of an arithmetic sequence, we use the formula a + (n-1)d. So for this question, a=3, d=2 and n=6, resulting in 3 + (6-1)*2 = 18."
+    },
+    {
+      "question_number": 2,
+      "correct_answer": "C",
+      "explanation": "In a geometric sequence, each term is multiplied by the same non-zero number (ratio) to get the next term. In this case, for sequence C, the ratio changes from 1 to 2 to 3, making it not a geometric sequence."
+    },
+    {
+      "question_number": 3,
+      "correct_answer": "D",
+      "explanation": "To find the sum of an arithmetic series, we use the formula n*((a1+an)/2), where n is the number of terms, a1 is the first term and an is the last term. In this case, n=5, a1=-3, and to find an, we need to find the 6th term since there are 5 complete terms plus one incomplete term. Then use the formula for finding the nth term (a + (n-1)d) to get an. After that, calculate the sum."
+    },
+    {
+      "question_number": 4,
+      "correct_answer": "C",
+      "explanation": "In a geometric sequence, each term is multiplied by the same non-zero number (ratio) to get the next term. In this case, for sequence C, the ratio changes from 1 to 1/2 to 1/3 making it not a geometric sequence."
+    },
+    {
+      "question_number": 5,
+      "correct_answer": "C",
+      "explanation": "To find the sum of an arithmetic series, we use the formula n*((a1+an)/2), where n is the number of terms, a1 is the first term and an is the last term. In this case, n=7, a1=4 and to find an, we need to find the 8th term since there are 7 complete terms plus one incomplete term. Then use the formula for finding the nth term (a + (n-1)d) to get an. After that, calculate the sum."
+    },
+    {
+      "question_number": 6,
+      "correct_answer": "A",
+      "explanation": "In option A, the difference between consecutive terms is constant, which defines an arithmetic sequence."
+    },
+    {
+      "question_number": 7,
+      "correct_answer": "A",
+      "explanation": "To find the nth term of this sequence (n odd), you can use the formula: a_n = a_1 + (n - 1) * d, where d = -4. For n = 6, a_6 = 1 + (6 - 1) * -4 = -9."
+    },
+    {
+      "question_number": 8,
+      "correct_answer": "B",
+      "explanation": "For a geometric sequence, the sum of n terms can be calculated using the formula: S_n = a_1 * (1 - r^n) / (1 - r), where r is the common ratio. In this case, r = 3 and we need to find S_10. Using the formula, we get S_10 \u2248 750."
+    },
+    {
+      "question_number": 9,
+      "correct_answer": "C",
+      "explanation": "To find the first term of an arithmetic sequence when given the 5th term and the common difference, use the formula: a_n = a_1 + (n - 1) * d. Since we want to find a_1, let n = 5, a_5 = 23, and d = 5. Solving for a_1 gives us a_1 = 23 - 4*5."
+    },
+    {
+      "question_number": 10,
+      "correct_answer": "B",
+      "explanation": "In this sequence, the difference between consecutive terms is constant and equal to 7. So, to find the next term after 28, we just add 7: 28 + 7 = 35. However, since the options are not in order, the correct answer is B: 42 (since 21 + 7 = 28 and 28 + 7 = 35)."
+    },
+    {
+      "question_number": 11,
+      "correct_answer": "A",
+      "explanation": "Each number in the sequence is increasing by 3. So, if we continue this pattern, the next number would be 15."
+    },
+    {
+      "question_number": 12,
+      "correct_answer": "C",
+      "explanation": "In the given arithmetic sequence, each term increases by 3. The number 9 does not follow this pattern."
+    },
+    {
+      "question_number": 13,
+      "correct_answer": "A",
+      "explanation": "In a geometric sequence, the ratio between any two consecutive terms is constant. Here, each term is multiplied by 3 to get the next one, so the common ratio is indeed 3."
+    },
+    {
+      "question_number": 14,
+      "correct_answer": "B",
+      "explanation": "Let the common difference be 'd'. If the sum of three terms is 21 and the first term is 5, then we can write the equation: 5 + (5+d) + (5+(2*d)) = 21. Solving this equation gives us d=3."
+    },
+    {
+      "question_number": 15,
+      "correct_answer": "A",
+      "explanation": "This is a geometric sequence with a common ratio of -1. So, the sum of n terms in this sequence can be found using the formula S_n = a * (1 - r^n) / (1 - r), where 'a' is the first term and 'r' is the common ratio. Here, a=4 and r=-1. Plugging these values into the formula gives us S_7 = 4 * (1 + 1^7) / (1 - 1) = 4 * (1+128)/(-2) = -32."
+    },
+    {
+      "question_number": 16,
+      "correct_answer": "C",
+      "explanation": "The 6th term of an arithmetic sequence (a_n) can be found using the formula: a_n = a_1 + (n-1)d, where a_1 is the first term, d is the common difference, and n is the term number. Here, a_1 = 3 and d = 4. So, a_6 = 3 + (6-1)4 = 22."
+    },
+    {
+      "question_number": 17,
+      "correct_answer": "B",
+      "explanation": "The sum of the first n terms (S_n) of an arithmetic sequence can be found using the formula: S_n = (n/2)*(2a_1 + (n-1)d), where a_1 is the first term, d is the common difference, and n is the number of terms. Here, a_1 = -2 and d = 5. So, S_7 = (7/2)*(2*-2 + (7-1)5) = 110."
+    },
+    {
+      "question_number": 18,
+      "correct_answer": "A",
+      "explanation": "The nth term of a geometric sequence (a_n) can be found using the formula: a_n = a_1 * r^(n-1), where a_1 is the initial term and r is the common ratio. Here, a_1 = 8 and r = 2. So, a_n = 8 * (2^(n-1))."
+    },
+    {
+      "question_number": 19,
+      "correct_answer": "C",
+      "explanation": "The sum of the first n terms (S_n) of a geometric sequence can be found using the formula: S_n = a_1 * (1 - r^n) / (1 - r), where a_1 is the initial term and r is the common ratio. Here, a_1 = 5 and r = 3. So, S_6 = 5 * (1 - 3^6) / (1 - 3) = 4320."
+    },
+    {
+      "question_number": 20,
+      "correct_answer": "B",
+      "explanation": "While the sum of three consecutive terms in an arithmetic sequence can be found using the formula: a_n + (a_n+1) + (a_n+2) = 3a_n + 3, this does NOT always equal three times the middle term. This property holds true only for certain specific sequences (such as those with a common difference of 2 or 3), but not in general."
+    },
+    {
+      "question_number": 21,
+      "correct_answer": "B",
+      "explanation": "The nth term of an arithmetic sequence with first term a and common difference d can be found using the formula: an = a + (n-1)d. For this question, we know a = 3, d = 2, and n = 5+1 (since we're looking for the next term after the 5th). Therefore, the 5th term is 3+(5-1)*2 = 14. To find the next term, we use the same formula with n = 6: an = 3 + (6-1)*2 = 20."
+    },
+    {
+      "question_number": 22,
+      "correct_answer": "D",
+      "explanation": "In an arithmetic sequence, each term increases or decreases by a constant difference. The sequence {0, 4, 8, 12, 16} does not follow this pattern as the differences between consecutive terms are not constant."
+    },
+    {
+      "question_number": 23,
+      "correct_answer": "B",
+      "explanation": "The nth term of a geometric sequence with first term a and common ratio r can be found using the formula: an = a*r^(n-1). For this question, we want to find the sum of the first 5 terms. This can be calculated by finding the sum of the individual terms (using the formula mentioned above) and then adding them up. The calculation results in Sum = 96."
+    },
+    {
+      "question_number": 24,
+      "correct_answer": "A",
+      "explanation": "The nth term of an arithmetic sequence with first term a and common difference d can be found using the formula: an = a + (n-1)d. For this question, we know a = 5, d = -3, and n = 7-1 (since we're looking for the term before the 7th). Therefore, the 7th term is 5+(7-1)*(-3) = 12."
+    },
+    {
+      "question_number": 25,
+      "correct_answer": "A",
+      "explanation": "In an arithmetic sequence, each term increases or decreases by a constant difference. The sequence {2, 4, 6, 8, 10} follows this pattern as the differences between consecutive terms are constant."
+    }
+  ]
+}

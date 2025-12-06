@@ -1,0 +1,248 @@
+{
+  "paper_number": 7,
+  "grade": "8",
+  "subject": "Maths",
+  "topic": "Sequences and Series",
+  "questions": [
+    {
+      "question_number": 1,
+      "question_text": "Which of the following is an arithmetic sequence?",
+      "options": {
+        "A": "[3, 7, 11, 15, ...]",
+        "B": "[2, 4, 6, 8, ...]",
+        "C": "[5, 9, 13, 17, ...]",
+        "D": "[0, -2, -4, -6, ...]"
+      },
+      "correct_answer": "B",
+      "explanation": "The given sequence has a common difference of 2, making it an arithmetic sequence."
+    },
+    {
+      "question_number": 2,
+      "question_text": "If the sum of four terms of an arithmetic series is 36 and the first term is 5, what is the common difference?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      },
+      "correct_answer": "C",
+      "explanation": "Let the common difference be 'd'. The first term is 5, and the sum of four terms is 36. Using the formula for the sum of an arithmetic series (n/2 * (first + last)), we can find that the fourth term should be (5+3*d). Solving for d gives us a common difference of 4."
+    },
+    {
+      "question_number": 3,
+      "question_text": "Which of the following is an example of a geometric sequence?",
+      "options": {
+        "A": "[2, 6, 18, 54, ...]",
+        "B": "[3, 9, 27, 81, ...]",
+        "C": "[4, 16, 64, 256, ...]",
+        "D": "[5, 10, 15, 20, ...]"
+      },
+      "correct_answer": "C",
+      "explanation": "The given sequence has a common ratio of 4 (since each term is the previous term multiplied by 4), making it a geometric sequence."
+    },
+    {
+      "question_number": 4,
+      "question_text": "If the sum of five terms in a geometric series is 62.5 and the first term is 1, what is the common ratio?",
+      "options": {
+        "A": "1.5",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "correct_answer": "B",
+      "explanation": "Let the common ratio be 'r'. The sum of five terms in a geometric series is given by (first * (1 - r^n) / (1 - r)). Solving for r gives us a common ratio of 2."
+    },
+    {
+      "question_number": 5,
+      "question_text": "Given the sequence: S = [a, ar, ar^2, ar^3, ...]",
+      "options": {
+        "A": "S is an arithmetic sequence",
+        "B": "S is a geometric sequence",
+        "C": "S can be either arithmetic or geometric depending on the value of r",
+        "D": "S does not represent a sequence"
+      },
+      "correct_answer": "C",
+      "explanation": "The given sequence S is a geometric sequence if |r| (the absolute value of r) is greater than 1, an arithmetic sequence if r = 1, and neither if r is between -1 and 1. So the sequence can be either arithmetic or geometric depending on the value of r."
+    },
+    {
+      "question_number": 6,
+      "question_text": "Which of the following is not a valid arithmetic sequence?",
+      "options": {
+        "A": "3, 6, 9, 12, ... (common difference = 3)",
+        "B": "5, 10, 15, 20, ... (common difference = 5)",
+        "C": "4, 8, 12, 16, ... (common difference = 4)",
+        "D": "7, 2, -1, -4, ... (common difference = -5)"
+      },
+      "correct_answer": "D",
+      "explanation": "The sequence D does not follow a constant common difference as it alternates between positive and negative numbers."
+    },
+    {
+      "question_number": 7,
+      "question_text": "If the third term of an arithmetic sequence is 15 and the common difference is 3, what is the first term?",
+      "options": {
+        "A": "6",
+        "B": "9",
+        "C": "12",
+        "D": "15"
+      },
+      "correct_answer": "C",
+      "explanation": "If a third term (t3) of an arithmetic sequence is given and the common difference (d) is known, the first term (t1) can be found using the formula: t1 = t3 - 2*d."
+    },
+    {
+      "question_number": 8,
+      "question_text": "What is the sum of the first 5 terms of an arithmetic sequence if the first term is 2 and the common difference is 4?",
+      "options": {
+        "A": "106",
+        "B": "110",
+        "C": "120",
+        "D": "124"
+      },
+      "correct_answer": "C",
+      "explanation": "The nth term (Tn) of an arithmetic sequence can be found using the formula: Tn = T1 + (n - 1)*d. The sum of the first n terms (Sn) can be found using the formula: Sn = [(n*(2*T1 + (n - 1)*d)) / 2]."
+    },
+    {
+      "question_number": 9,
+      "question_text": "Which of the following is not a valid geometric sequence?",
+      "options": {
+        "A": "1, 3, 9, 27, ... (common ratio = 3)",
+        "B": "2, 4, 8, 16, ... (common ratio = 2)",
+        "C": "4, 8, 12, 16, ... (common ratio = 3)",
+        "D": "-2, -4, -8, -16, ... (common ratio = -2)"
+      },
+      "correct_answer": "C",
+      "explanation": "The sequence C does not follow a constant common ratio as the common ratio should be a non-zero real number."
+    },
+    {
+      "question_number": 10,
+      "question_text": "If the fourth term of a geometric sequence is 64 and the common ratio is 2, what is the first term?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "8",
+        "D": "16"
+      },
+      "correct_answer": "B",
+      "explanation": "If the fourth term (T4) of a geometric sequence is given and the common ratio (r) is known, the first term (T1) can be found using the formula: T1 = r^(n-1)*Tn."
+    },
+    {
+      "question_number": 11,
+      "question_text": "Which of the following sequences is not arithmetic?",
+      "options": {
+        "A": "[7, 12, 17, 22]",
+        "B": "[3, 6, 9, 12]",
+        "C": "[5, 9, 14, 19]",
+        "D": "[8, 11, 14, 17]"
+      },
+      "correct_answer": "A",
+      "explanation": "The sequence [7, 12, 17, 22] does not have a common difference of 5 between each term."
+    },
+    {
+      "question_number": 12,
+      "question_text": "What is the tenth term of an arithmetic series with first term 3 and common difference 4?",
+      "options": {
+        "A": "30",
+        "B": "34",
+        "C": "38",
+        "D": "42"
+      },
+      "correct_answer": "D",
+      "explanation": "The nth term of an arithmetic series is given by a + (n-1)d, where a is the first term and d is the common difference. So, the tenth term for this series would be 3 + (10-1)4 = 42."
+    },
+    {
+      "question_number": 13,
+      "question_text": "Find the sum of the first 5 terms of a geometric sequence with first term 2 and common ratio 3.",
+      "options": {
+        "A": "120",
+        "B": "180",
+        "C": "240",
+        "D": "360"
+      },
+      "correct_answer": "C",
+      "explanation": "The nth term of a geometric sequence is given by a*r^(n-1). Here, the sum of the first n terms S_n would be S_n = a * (1 - r^n) / (1 - r), where a is the first term and r is the common ratio. So, S_5 for this series would be 2 * (1 - 3^5) / (1 - 3) = 240."
+    },
+    {
+      "question_number": 14,
+      "question_text": "What is the pattern in the sequence?",
+      "options": {
+        "A": "Doubling each term",
+        "B": "Adding 2 to each term",
+        "C": "Subtracting 3 from each even term and adding 4 to each odd term",
+        "D": "Halving each term"
+      },
+      "correct_answer": "C",
+      "explanation": "The sequence [2, 5, 8, 1, 4, 7] shows an alternating pattern of subtracting 3 from even terms and adding 4 to odd terms."
+    },
+    {
+      "question_number": 15,
+      "question_text": "If the sum of the first n terms of an arithmetic sequence is Sn = 2n^2 + n, what is the common difference?",
+      "options": {
+        "A": "2",
+        "B": "4",
+        "C": "6",
+        "D": "8"
+      },
+      "correct_answer": "A",
+      "explanation": "The sum of the first n terms of an arithmetic sequence can be expressed as Sn = (n * (2a + (n-1)d)) / 2, where a is the first term and d is the common difference. We are given that Sn = 2n^2 + n, so comparing these two expressions will give us d = 2."
+    },
+    {
+      "question_number": 16,
+      "question_text": "What is the next term in the sequence 3, 6, 9, 12, ...?",
+      "options": {
+        "A": "15",
+        "B": "20",
+        "C": "18",
+        "D": "21"
+      },
+      "correct_answer": "A",
+      "explanation": "The sequence is increasing by 3 each time. So the next term would be 12 + 3 = 15."
+    },
+    {
+      "question_number": 17,
+      "question_text": "Which of the following options best describes the given sequence 2, 4, 8, 16, ...?",
+      "options": {
+        "A": "The terms are squares.",
+        "B": "The terms are cubes.",
+        "C": "The terms are increasing by 3 each time.",
+        "D": "The terms are increasing by 2 each time."
+      },
+      "correct_answer": "A",
+      "explanation": "The sequence is the squares of natural numbers starting from 1."
+    },
+    {
+      "question_number": 18,
+      "question_text": "If the sum of first 5 terms of an arithmetic series is 40 and the common difference is 3, what is the first term?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      },
+      "correct_answer": "C",
+      "explanation": "Let's denote the first term as 'a'. The sum of the first five terms can be represented as S_n = n*(a + l)/2, where l is the last term. Given that S_5 = 40 and l = a + 4*3, we can solve for a."
+    },
+    {
+      "question_number": 19,
+      "question_text": "What is the sum of the first 12 terms of the sequence 1, -2, 3, -4, ...?",
+      "options": {
+        "A": "-96",
+        "B": "96",
+        "C": "0",
+        "D": "128"
+      },
+      "correct_answer": "C",
+      "explanation": "This is an alternating sequence. To find the sum, we can use the formula for the sum of an n-term alternating series: S = a_1 - a_2 + a_3 - a_4...+ (-1)^(n-1)*a_n. Here, a_1 = 1 and the pattern repeats every 4 terms, so we just need to calculate the sum of the first 4 terms (1 - 2 + 3 - 4 = 0) and multiply by 3 because there are 3 sets of 4 terms in 12 terms."
+    },
+    {
+      "question_number": 20,
+      "question_text": "What is the sum of the first 8 terms of the arithmetic series with the first term 'a' and common difference 'd', if the sum of the first 5 terms is 30 and the sum of the first 7 terms is 62?",
+      "options": {
+        "A": "Impossible to find without more information.",
+        "B": "54",
+        "C": "58",
+        "D": "60"
+      },
+      "correct_answer": "B",
+      "explanation": "Let's denote the sum of the first 8 terms as S_8 and the sum of the first 7 terms as S_7. We know that S_5 = a + (4*d) + (5*d + d^2)/2 = 30 and S_7 = a + (6*d) + (7*d + d^2) + (8*d + 2*d^2)/2 = 62. Solving these two equations will give us 'a' and 'd', from which we can find S_8."
+    }
+  ]
+}

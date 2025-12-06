@@ -1,0 +1,133 @@
+{
+  "paper_number": 2,
+  "grade": "8",
+  "subject": "Maths",
+  "topic": "Sequences and Series",
+  "answers": [
+    {
+      "question_number": 1,
+      "correct_answer": "A",
+      "explanation": "An arithmetic sequence is a sequence of numbers in which the difference between any two consecutive terms is constant. In this case, the common difference is 2."
+    },
+    {
+      "question_number": 2,
+      "correct_answer": "A",
+      "explanation": "The sum of the first n terms in an arithmetic sequence is given by the formula S_n = n * (2 * a + (n - 1) * d), where 'a' is the first term and 'd' is the common difference. In this case, we are looking for the sum of the first 10 terms, so n = 10."
+    },
+    {
+      "question_number": 3,
+      "correct_answer": "B",
+      "explanation": "An arithmetic sequence is a sequence of numbers in which the difference between any two consecutive terms is constant. In this case, the common differences are not constant (3 - 5.5 = -2.5)."
+    },
+    {
+      "question_number": 4,
+      "correct_answer": "C",
+      "explanation": "The nth term of an arithmetic sequence is given by the formula a+(n-1)*d. In this case, we are looking for the 8th term, so n = 8."
+    },
+    {
+      "question_number": 5,
+      "correct_answer": "C",
+      "explanation": "The common difference in an arithmetic sequence can be found by subtracting any two terms. In this case, we can find the common difference by subtracting the 4th term (12) from the 6th term (30), which gives us 18."
+    },
+    {
+      "question_number": 6,
+      "correct_answer": "C",
+      "explanation": "The sequence C follows the pattern of increasing by 4 each term."
+    },
+    {
+      "question_number": 7,
+      "correct_answer": "A",
+      "explanation": "The pattern is to subtract 14 from the previous term."
+    },
+    {
+      "question_number": 8,
+      "correct_answer": "D",
+      "explanation": "The nth term of an arithmetic series is given by a + (n-1)d, where a is the first term and d is the common difference. Here, a = 15 and d = 3. The sum S_n of the first n terms is given by S_n = (n/2)(2a + (n-1)d)."
+    },
+    {
+      "question_number": 9,
+      "correct_answer": "C",
+      "explanation": "In a geometric sequence, each term after the first is obtained by multiplying the previous term by a constant (common ratio). Here, the common ratio is 0.5."
+    },
+    {
+      "question_number": 10,
+      "correct_answer": "B",
+      "explanation": "For an infinite geometric series with first term a and common ratio r, the sum S is given by S = a / (1 - r). Here, a = 6 and r = 1/2."
+    },
+    {
+      "question_number": 11,
+      "correct_answer": "B",
+      "explanation": "By noticing the common difference (3) between terms, we can find the nth term using the formula: nth term = a + (n-1)d, where a is the first term and d is the common difference. In this case, a = 3, d = 3, and we want to find the term when n = 8."
+    },
+    {
+      "question_number": 12,
+      "correct_answer": "C",
+      "explanation": "The formula for the sum of an arithmetic sequence is: S_n = (n/2)*(a + l), where n is the number of terms, a is the first term, and l is the last term. Here, a = 5, and l = 13+9 = 22 (the 10th term). Using the formula, we get S_10 = (10/2)*(5+22) = 255."
+    },
+    {
+      "question_number": 13,
+      "correct_answer": "C",
+      "explanation": "The common difference (d) in an arithmetic sequence is found by subtracting the first term from any subsequent term. Here, we subtract the first term (8) from the second term (14), getting 6. The correct answer is C, 7, because we must add this difference to each term to generate the next terms in the sequence."
+    },
+    {
+      "question_number": 14,
+      "correct_answer": "C",
+      "explanation": "The formula for the sum of a geometric sequence is: S_n = a*(1 - r^n)/(1-r), where n is the number of terms, a is the first term, and r is the common ratio. Here, a = 2, and r = 3 (the second term divided by the first). To find the sum of the first four terms, we set n=4 in the formula."
+    },
+    {
+      "question_number": 15,
+      "correct_answer": "C",
+      "explanation": "In a geometric sequence, we can find the nth term using the formula: a_n = a * r^(n-1), where a is the first term and r is the common ratio. Here, a = 2, r = 3, and we want to find the 8th term (a_8). Using the formula, we get a_8 = 2 * 3^(8-1) = 216."
+    },
+    {
+      "question_number": 16,
+      "correct_answer": "D",
+      "explanation": "An arithmetic sequence can have either a finite or infinite number of terms."
+    },
+    {
+      "question_number": 17,
+      "correct_answer": "C",
+      "explanation": "The sum of the first n terms of an arithmetic sequence can be found using the formula S_n = (n * (2a_1 + (n - 1) * d)) / 2, where a_1 is the first term and d is the common difference. In this case, n=7, a_1=3, and d=2, resulting in S_7 = 154."
+    },
+    {
+      "question_number": 18,
+      "correct_answer": "C",
+      "explanation": "The given sequence {2, 5, 8, 11, ...} is not an arithmetic sequence because it does not have a constant common difference between terms."
+    },
+    {
+      "question_number": 19,
+      "correct_answer": "C",
+      "explanation": "The nth term of an arithmetic sequence can be found using the formula a_n = a_1 + (n - 1) * d. In this case, n=9, a_1=7, and d=3, resulting in a_9 = 45."
+    },
+    {
+      "question_number": 20,
+      "correct_answer": "B",
+      "explanation": "The sum of the first n terms of an arithmetic sequence can be found using the formula S_n = (n * (2a_1 + (n - 1) * d)) / 2, where a_1 is the first term and d is the common difference. In this case, n=6, a_1=-2, and d=4, resulting in S_6 = -54."
+    },
+    {
+      "question_number": 21,
+      "correct_answer": "A",
+      "explanation": "In option A, each term increases by a constant difference of 3."
+    },
+    {
+      "question_number": 22,
+      "correct_answer": "B",
+      "explanation": "The first term (a) is 12 and the common difference (d) is 4. Using the formula S_n = n*(2a + (n-1)*d)/2, where S_n is the sum of the first n terms, we find S_5 = 6*(2*12 + 4*4)/2 = 130."
+    },
+    {
+      "question_number": 23,
+      "correct_answer": "A",
+      "explanation": "In option A, each term decreases by a constant difference of 2."
+    },
+    {
+      "question_number": 24,
+      "correct_answer": "C",
+      "explanation": "The first term (a) is 35 and the common difference (d) is 5. Using the formula S_n = n*(2a + (n-1)*d)/2, where S_n is the sum of the first n terms, we find S_10 = 10*(2*35 + 9*5)/2 = 325."
+    },
+    {
+      "question_number": 25,
+      "correct_answer": "C",
+      "explanation": "The sequence follows the pattern of squares. If we take the first term and square it (9), then add it to the last term squared (81) and divide by 2, we find that each term increases by the sum of the squares of two consecutive terms. So, the sixth term can be found using the formula: 3^2 + 81 - 5*6 = 504."
+    }
+  ]
+}

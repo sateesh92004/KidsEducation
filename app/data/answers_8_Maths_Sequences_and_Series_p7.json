@@ -1,0 +1,108 @@
+{
+  "paper_number": 7,
+  "grade": "8",
+  "subject": "Maths",
+  "topic": "Sequences and Series",
+  "answers": [
+    {
+      "question_number": 1,
+      "correct_answer": "B",
+      "explanation": "The given sequence has a common difference of 2, making it an arithmetic sequence."
+    },
+    {
+      "question_number": 2,
+      "correct_answer": "C",
+      "explanation": "Let the common difference be 'd'. The first term is 5, and the sum of four terms is 36. Using the formula for the sum of an arithmetic series (n/2 * (first + last)), we can find that the fourth term should be (5+3*d). Solving for d gives us a common difference of 4."
+    },
+    {
+      "question_number": 3,
+      "correct_answer": "C",
+      "explanation": "The given sequence has a common ratio of 4 (since each term is the previous term multiplied by 4), making it a geometric sequence."
+    },
+    {
+      "question_number": 4,
+      "correct_answer": "B",
+      "explanation": "Let the common ratio be 'r'. The sum of five terms in a geometric series is given by (first * (1 - r^n) / (1 - r)). Solving for r gives us a common ratio of 2."
+    },
+    {
+      "question_number": 5,
+      "correct_answer": "C",
+      "explanation": "The given sequence S is a geometric sequence if |r| (the absolute value of r) is greater than 1, an arithmetic sequence if r = 1, and neither if r is between -1 and 1. So the sequence can be either arithmetic or geometric depending on the value of r."
+    },
+    {
+      "question_number": 6,
+      "correct_answer": "D",
+      "explanation": "The sequence D does not follow a constant common difference as it alternates between positive and negative numbers."
+    },
+    {
+      "question_number": 7,
+      "correct_answer": "C",
+      "explanation": "If a third term (t3) of an arithmetic sequence is given and the common difference (d) is known, the first term (t1) can be found using the formula: t1 = t3 - 2*d."
+    },
+    {
+      "question_number": 8,
+      "correct_answer": "C",
+      "explanation": "The nth term (Tn) of an arithmetic sequence can be found using the formula: Tn = T1 + (n - 1)*d. The sum of the first n terms (Sn) can be found using the formula: Sn = [(n*(2*T1 + (n - 1)*d)) / 2]."
+    },
+    {
+      "question_number": 9,
+      "correct_answer": "C",
+      "explanation": "The sequence C does not follow a constant common ratio as the common ratio should be a non-zero real number."
+    },
+    {
+      "question_number": 10,
+      "correct_answer": "B",
+      "explanation": "If the fourth term (T4) of a geometric sequence is given and the common ratio (r) is known, the first term (T1) can be found using the formula: T1 = r^(n-1)*Tn."
+    },
+    {
+      "question_number": 11,
+      "correct_answer": "A",
+      "explanation": "The sequence [7, 12, 17, 22] does not have a common difference of 5 between each term."
+    },
+    {
+      "question_number": 12,
+      "correct_answer": "D",
+      "explanation": "The nth term of an arithmetic series is given by a + (n-1)d, where a is the first term and d is the common difference. So, the tenth term for this series would be 3 + (10-1)4 = 42."
+    },
+    {
+      "question_number": 13,
+      "correct_answer": "C",
+      "explanation": "The nth term of a geometric sequence is given by a*r^(n-1). Here, the sum of the first n terms S_n would be S_n = a * (1 - r^n) / (1 - r), where a is the first term and r is the common ratio. So, S_5 for this series would be 2 * (1 - 3^5) / (1 - 3) = 240."
+    },
+    {
+      "question_number": 14,
+      "correct_answer": "C",
+      "explanation": "The sequence [2, 5, 8, 1, 4, 7] shows an alternating pattern of subtracting 3 from even terms and adding 4 to odd terms."
+    },
+    {
+      "question_number": 15,
+      "correct_answer": "A",
+      "explanation": "The sum of the first n terms of an arithmetic sequence can be expressed as Sn = (n * (2a + (n-1)d)) / 2, where a is the first term and d is the common difference. We are given that Sn = 2n^2 + n, so comparing these two expressions will give us d = 2."
+    },
+    {
+      "question_number": 16,
+      "correct_answer": "A",
+      "explanation": "The sequence is increasing by 3 each time. So the next term would be 12 + 3 = 15."
+    },
+    {
+      "question_number": 17,
+      "correct_answer": "A",
+      "explanation": "The sequence is the squares of natural numbers starting from 1."
+    },
+    {
+      "question_number": 18,
+      "correct_answer": "C",
+      "explanation": "Let's denote the first term as 'a'. The sum of the first five terms can be represented as S_n = n*(a + l)/2, where l is the last term. Given that S_5 = 40 and l = a + 4*3, we can solve for a."
+    },
+    {
+      "question_number": 19,
+      "correct_answer": "C",
+      "explanation": "This is an alternating sequence. To find the sum, we can use the formula for the sum of an n-term alternating series: S = a_1 - a_2 + a_3 - a_4...+ (-1)^(n-1)*a_n. Here, a_1 = 1 and the pattern repeats every 4 terms, so we just need to calculate the sum of the first 4 terms (1 - 2 + 3 - 4 = 0) and multiply by 3 because there are 3 sets of 4 terms in 12 terms."
+    },
+    {
+      "question_number": 20,
+      "correct_answer": "B",
+      "explanation": "Let's denote the sum of the first 8 terms as S_8 and the sum of the first 7 terms as S_7. We know that S_5 = a + (4*d) + (5*d + d^2)/2 = 30 and S_7 = a + (6*d) + (7*d + d^2) + (8*d + 2*d^2)/2 = 62. Solving these two equations will give us 'a' and 'd', from which we can find S_8."
+    }
+  ]
+}

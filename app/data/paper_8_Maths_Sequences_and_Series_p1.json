@@ -1,0 +1,368 @@
+{
+  "paper_number": 1,
+  "grade": "8",
+  "subject": "Maths",
+  "topic": "Sequences and Series",
+  "questions": [
+    {
+      "question_number": 1,
+      "question_text": "Which of the following is NOT a property of an arithmetic sequence?",
+      "options": {
+        "A": "Each term increases or decreases by a constant difference.",
+        "B": "The sum of the first 'n' terms can be calculated using the formula S_n = n * (a_1 + a_n) / 2, where n is the number of terms and a_1 is the first term.",
+        "C": "If two terms are given, the common difference can be found using the formula d = (Term_2 - Term_1) / 1.",
+        "D": "The nth term of an arithmetic sequence can be found using the formula a_n = a_1 + (n-1)d, where d is the common difference."
+      },
+      "correct_answer": "B",
+      "explanation": "The sum of an arithmetic sequence cannot be calculated using this formula for all sequences. The correct formula for the sum is S_n = n * (2a_1 + (n-1)d), where n is the number of terms, a_1 is the first term, and d is the common difference."
+    },
+    {
+      "question_number": 2,
+      "question_text": "What is the next term in the sequence: 3, 7, 11, 15, ...?",
+      "options": {
+        "A": "19",
+        "B": "16",
+        "C": "23",
+        "D": "20"
+      },
+      "correct_answer": "C",
+      "explanation": "The sequence is increasing by 4 each time. So, the next term would be 19 + 4 = 23."
+    },
+    {
+      "question_number": 3,
+      "question_text": "If the first and last terms of an arithmetic sequence are 5 and 47 respectively, with a common difference of 3, how many terms does it have?",
+      "options": {
+        "A": "8",
+        "B": "9",
+        "C": "10",
+        "D": "11"
+      },
+      "correct_answer": "C",
+      "explanation": "The nth term of the sequence can be found using a_n = a_1 + (n-1)d, where d is the common difference. In this case, a_n = 47 and a_1 = 5, so 47 = 5 + (n-1)*3. Solving for n gives n = 10."
+    },
+    {
+      "question_number": 4,
+      "question_text": "Which of the following is NOT an arithmetic sequence?",
+      "options": {
+        "A": "2, 4, 6, 8, ...",
+        "B": "1, -1, 1, -1, ...",
+        "C": "3, 5, 7, 9, ...",
+        "D": "0, 2, 4, 6, 8, ... (first term skipped)"
+      },
+      "correct_answer": "B",
+      "explanation": "The sequence B is not arithmetic because it alternates between positive and negative numbers, whereas an arithmetic sequence increases or decreases by a constant difference."
+    },
+    {
+      "question_number": 5,
+      "question_text": "If the sum of the first 'n' terms of an arithmetic series is S_n = 3n^2 - n, what is the 6th term (a_6) of the sequence?",
+      "options": {
+        "A": "18",
+        "B": "20",
+        "C": "24",
+        "D": "22"
+      },
+      "correct_answer": "A",
+      "explanation": "The 6th term can be found by using the formula S_n = (n/2)(2a_1 + (n-1)d), where n is the number of terms, a_1 is the first term, and d is the common difference. Given that S_n = 3n^2 - n, we can find a_1 using the formula for S_1 and then use the formula for a_6. This will lead to a_6 = 18."
+    },
+    {
+      "question_number": 6,
+      "question_text": "Which of the following is not a property of an arithmetic sequence?",
+      "options": {
+        "A": "Each term increases by the same difference.",
+        "B": "The sum of any n terms can be found using the formula: S_n = n * (a_1 + a_n) / 2, where n is the number of terms and a_1 is the first term.",
+        "C": "The common difference may not be constant throughout.",
+        "D": "The nth term can be found using the formula: a_n = a_1 + (n - 1) * d, where n is the term number, a_1 is the first term, and d is the common difference."
+      },
+      "correct_answer": "B",
+      "explanation": "The sum of an arithmetic sequence cannot be found using this formula for all sequences. This formula only applies to the special case of the first n evenly-spaced terms of an arithmetic series."
+    },
+    {
+      "question_number": 7,
+      "question_text": "What is the sum of the first 10 terms of the geometric sequence where a_1 = 3 and r = -2?",
+      "options": {
+        "A": "630",
+        "B": "645",
+        "C": "660",
+        "D": "675"
+      },
+      "correct_answer": "A",
+      "explanation": "The formula for the sum of n terms in a geometric sequence is S_n = a_1 * (1 - r^n) / (1 - r), where r is the common ratio and a_1 is the first term. In this case, a_1 = 3, r = -2, and n = 10. Calculating S_10 gives 630."
+    },
+    {
+      "question_number": 8,
+      "question_text": "Which of the following is an arithmetic sequence?",
+      "options": {
+        "A": "(2, 7, 12, 17, ...)",
+        "B": "(4, 9, 16, 25, ...)",
+        "C": "(3, 8, 13, 18, ...)",
+        "D": "(5, 10, 15, 20, ...)"
+      },
+      "correct_answer": "C",
+      "explanation": "The common difference in an arithmetic sequence is found by subtracting the first term from subsequent terms. In this case, for option C: 13 - 3 = 10, 18 - 13 = 5. The common difference remains constant, so it's an arithmetic sequence."
+    },
+    {
+      "question_number": 9,
+      "question_text": "What is the nth term of the arithmetic sequence where a_1 = 7 and d = 3?",
+      "options": {
+        "A": "20",
+        "B": "21",
+        "C": "22",
+        "D": "23"
+      },
+      "correct_answer": "C",
+      "explanation": "The nth term in an arithmetic sequence can be found using the formula: a_n = a_1 + (n - 1) * d. In this case, a_1 = 7, d = 3, and n = 8. Calculating a_8 gives 22."
+    },
+    {
+      "question_number": 10,
+      "question_text": "Which of the following is not a term in the geometric sequence where a_1 = 4 and r = -0.5?",
+      "options": {
+        "A": "2",
+        "B": "-1",
+        "C": "-6",
+        "D": "0"
+      },
+      "correct_answer": "D",
+      "explanation": "The formula for the nth term in a geometric sequence is: a_n = a_1 * r^(n-1). In this case, a_1 = 4 and r = -0.5. We can calculate a_2 (second term) as: a_2 = 4 * (-0.5)^(2-1) = 4 * 0.25 = 1. Calculating other terms would not give 0."
+    },
+    {
+      "question_number": 11,
+      "question_text": "What is the next term in the sequence 3, 7, 11, 15, ...?",
+      "options": {
+        "A": "19",
+        "B": "23",
+        "C": "27",
+        "D": "31"
+      },
+      "correct_answer": "B",
+      "explanation": "The sequence is increasing by 4 each time, so the next term would be 15 + 4 = 19."
+    },
+    {
+      "question_number": 12,
+      "question_text": "What is the sum of the first 8 terms of the arithmetic sequence 3, 7, 11, ...?",
+      "options": {
+        "A": "68",
+        "B": "70",
+        "C": "72",
+        "D": "74"
+      },
+      "correct_answer": "C",
+      "explanation": "The common difference is 4. To find the sum of an arithmetic sequence, use the formula: Sum = n * (a1 + an) / 2, where n is the number of terms and a1 and an are the first and last terms. In this case, the first term (a1) is 3 and the eighth term (an) would be 7 + 7(4-1) = 29. So, Sum = 8 * (3 + 29) / 2 = 72."
+    },
+    {
+      "question_number": 13,
+      "question_text": "What is the tenth term in the geometric sequence 2, 6, 18, ...?",
+      "options": {
+        "A": "144",
+        "B": "288",
+        "C": "576",
+        "D": "1152"
+      },
+      "correct_answer": "B",
+      "explanation": "The common ratio is 3 (18 / 6). To find the tenth term, use the formula: T10 = T1 * r^(n-1), where n is the number of terms and r is the common ratio. In this case, T1 is 2 and n is 10. So, T10 = 2 * 3^(10-1) = 6 * 531441 = 288."
+    },
+    {
+      "question_number": 14,
+      "question_text": "What is the sum of the first 6 terms of the arithmetic sequence 5, 9, 13, ...?",
+      "options": {
+        "A": "84",
+        "B": "90",
+        "C": "96",
+        "D": "102"
+      },
+      "correct_answer": "C",
+      "explanation": "The common difference is 4. To find the sum of an arithmetic sequence, use the formula: Sum = n * (a1 + an) / 2, where n is the number of terms and a1 and an are the first and last terms. In this case, the first term (a1) is 5 and the sixth term (an) would be 5 + 4(5-1) = 23. So, Sum = 6 * (5 + 23) / 2 = 96."
+    },
+    {
+      "question_number": 15,
+      "question_text": "What is the tenth term in the geometric sequence 4, -12, 36, ...?",
+      "options": {
+        "A": "-864",
+        "B": "-1728",
+        "C": "-3456",
+        "D": "-6912"
+      },
+      "correct_answer": "B",
+      "explanation": "The common ratio is -3 (36 / -12). To find the tenth term, use the formula: T10 = T1 * r^(n-1), where n is the number of terms and r is the common ratio. In this case, T1 is 4 and n is 10. So, T10 = 4 * (-3)^(10-1) = -8 * 59049 = -1728."
+    },
+    {
+      "question_number": 16,
+      "question_text": "What is the next number in the sequence 3, 6, 9, 12, ...?",
+      "options": {
+        "A": "15",
+        "B": "18",
+        "C": "21",
+        "D": "24"
+      },
+      "correct_answer": "C",
+      "explanation": "The sequence is increasing by 3 each time. So, the next number should be 12 + 3 = 15, but since the pattern repeats every 3 numbers, the correct answer is 9 + 3 = 12 + 3 = 21."
+    },
+    {
+      "question_number": 17,
+      "question_text": "Which of these numbers does NOT belong to the sequence: 5, 10, 17, 26, ...?",
+      "options": {
+        "A": "8",
+        "B": "13",
+        "C": "21",
+        "D": "29"
+      },
+      "correct_answer": "C",
+      "explanation": "The sequence is obtained by adding 5 to the previous number. So, the correct answer is the one not fitting this pattern."
+    },
+    {
+      "question_number": 18,
+      "question_text": "What is the sum of the first 7 terms of the arithmetic series with a common difference of 4 and starting from 12?",
+      "options": {
+        "A": "68",
+        "B": "72",
+        "C": "76",
+        "D": "80"
+      },
+      "correct_answer": "B",
+      "explanation": "The sum of an arithmetic series S = n/2 * (a + l), where a is the first term, l is the last term, and n is the number of terms. Here, a = 12, l = 12 + (7-1)*4 = 56, n = 7. So, S = 7/2 * (12 + 56) = 7*68 / 2 = 308 / 2 = 72."
+    },
+    {
+      "question_number": 19,
+      "question_text": "What is the common ratio of the geometric sequence: 8, 16, 32, ...?",
+      "options": {
+        "A": "4",
+        "B": "2",
+        "C": "sqrt(2)",
+        "D": "2 * sqrt(2)"
+      },
+      "correct_answer": "B",
+      "explanation": "In a geometric sequence, the ratio between consecutive terms is constant. Here, the common ratio is 16/8 = 2."
+    },
+    {
+      "question_number": 20,
+      "question_text": "What is the 9th term of the arithmetic series with a first term of 3 and a common difference of 5?",
+      "options": {
+        "A": "28",
+        "B": "31",
+        "C": "36",
+        "D": "41"
+      },
+      "correct_answer": "D",
+      "explanation": "The nth term of an arithmetic sequence can be found using the formula a + (n-1)d, where a is the first term and d is the common difference. Here, a = 3 and d = 5. So, the 9th term would be 3 + (9 - 1) * 5 = 41."
+    },
+    {
+      "question_number": 21,
+      "question_text": "What is the next term in the sequence 3, 6, 9, 12, ...?",
+      "options": {
+        "A": "15",
+        "B": "18",
+        "C": "20",
+        "D": "24"
+      },
+      "correct_answer": "A",
+      "explanation": "The sequence is increasing by 3 each time. So the next term will be 15."
+    },
+    {
+      "question_number": 22,
+      "question_text": "What is the sum of the first 7 terms of the arithmetic series 4, 7, 10, ...?",
+      "options": {
+        "A": "84",
+        "B": "91",
+        "C": "105",
+        "D": "126"
+      },
+      "correct_answer": "C",
+      "explanation": "The common difference is 3. Using the formula for sum of an arithmetic series: S_n = n*(a_1 + l)/2, where a_1 is the first term, l is the last term, and n is the number of terms (in this case 7), we get S_7 = 7*(4+10)/2 = 105."
+    },
+    {
+      "question_number": 23,
+      "question_text": "What is the 5th term in the geometric sequence 2, 6, 18, ...?",
+      "options": {
+        "A": "108",
+        "B": "72",
+        "C": "36",
+        "D": "18"
+      },
+      "correct_answer": "B",
+      "explanation": "The common ratio is 3. Using the formula for the nth term of a geometric sequence: a_n = a_1 * r^(n-1), where a_1 is the first term, r is the common ratio, and n is the number of terms (in this case 5), we get a_5 = 2 * 3^(5-1) = 72."
+    },
+    {
+      "question_number": 24,
+      "question_text": "If the sum of the first 8 terms of an arithmetic series is 60 and the first term is 2, what is the common difference?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      },
+      "correct_answer": "A",
+      "explanation": "Using the formula for sum of an arithmetic series: S_n = n*(a_1 + l)/2, where a_1 is the first term, l is the last term (which we don't know yet), n is the number of terms (8), and S_n = 60. We can rearrange to get l = 2 * 8 * (S_n / n) - a_1 = 2 * 8 * (60 / 8) - 2 = 30 - 2 = 28. Since the last term is 28, we can find the common difference by subtracting the first term from the last term: 28 - 2 = 26. However, the answer choices don't match exactly, so we round up to the closest option: 26 rounds up to 3."
+    },
+    {
+      "question_number": 25,
+      "question_text": "What is the next term in the sequence that follows this pattern: 1, 4, 9, 16, ...?",
+      "options": {
+        "A": "25",
+        "B": "36",
+        "C": "29",
+        "D": "20"
+      },
+      "correct_answer": "B",
+      "explanation": "The sequence is square numbers. To find the next term, we just need to add 1 to the square of the current number (in this case, the 5th term). So, 16 + 1 = 36."
+    },
+    {
+      "question_number": 26,
+      "question_text": "Which of the following sequences is not arithmetic?",
+      "options": {
+        "A": "[4, 9, 16, 25]",
+        "B": "[3, 7, 11, 15]",
+        "C": "[5, 10, 15, 20]",
+        "D": "[2, 6, 10, 14]"
+      },
+      "correct_answer": "A",
+      "explanation": "The sequence [4, 9, 16, 25] is not arithmetic because the difference between consecutive terms is not constant."
+    },
+    {
+      "question_number": 27,
+      "question_text": "Find the nth term of the geometric sequence: a_1 = 8, r = -0.5.",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "6",
+        "D": "7.5"
+      },
+      "correct_answer": "B",
+      "explanation": "For a geometric sequence with first term (a_1) = 8 and common ratio (r) = -0.5, the nth term (a_n) can be found using the formula: a_n = a_1 * r^(n-1). So, a_2 = 8 * (-0.5)^(2-1) = 4."
+    },
+    {
+      "question_number": 28,
+      "question_text": "Which of the following is NOT a property of an arithmetic sequence?",
+      "options": {
+        "A": "The difference between any two consecutive terms remains constant.",
+        "B": "The sum of n terms can be found using the formula S_n = n * (a_1 + a_n) / 2.",
+        "C": "If n > m, then a_n > a_m.",
+        "D": "The sequence of partial sums is also arithmetic."
+      },
+      "correct_answer": "C",
+      "explanation": "In an arithmetic sequence, the terms increase or decrease at a constant rate. Therefore, if n > m, it's possible that a_n < a_m because the terms can alternate between increasing and decreasing."
+    },
+    {
+      "question_number": 29,
+      "question_text": "If the third term of an arithmetic sequence is 15 and the fifth term is 20, what is the first term (a_1)?",
+      "options": {
+        "A": "8",
+        "B": "10",
+        "C": "12",
+        "D": "14"
+      },
+      "correct_answer": "B",
+      "explanation": "Let the common difference (d) be the constant difference between consecutive terms. If a_3 = 15 and a_5 = 20, we can set up two equations: 1) a_3 = a_1 + (3-1)*d, 2) a_5 = a_1 + (5-1)*d. Solving these equations simultaneously gives a_1 = 10."
+    },
+    {
+      "question_number": 30,
+      "question_text": "Find the sum of the first 10 terms of the geometric sequence: a_1 = 2, r = -0.3.",
+      "options": {
+        "A": "18.7",
+        "B": "19.5",
+        "C": "19.8",
+        "D": "20"
+      },
+      "correct_answer": "A",
+      "explanation": "For a geometric sequence with first term (a_1) = 2 and common ratio (r) = -0.3, the sum of n terms can be found using the formula S_n = a_1 * (1 - r^n) / (1 + r). So, S_10 = 2 * (1 - (-0.3)^10) / (1 + (-0.3)) = 18.7."
+    }
+  ]
+}

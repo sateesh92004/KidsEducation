@@ -1,0 +1,158 @@
+{
+  "paper_number": 4,
+  "grade": "8",
+  "subject": "Maths",
+  "topic": "Sequences and Series",
+  "answers": [
+    {
+      "question_number": 1,
+      "correct_answer": "B",
+      "explanation": "The sum of any two consecutive terms in an arithmetic sequence is NOT always the same. The sum of the first and second term is (T_1 + T_2) = 2T_1 - d, while the sum of the second and third term is (T_2 + T_3) = 2T_2 + d. These sums are not equal."
+    },
+    {
+      "question_number": 2,
+      "correct_answer": "A",
+      "explanation": "The common difference in this sequence is 7 (21 - 14 = 7, 28 - 21 = 7). To find the next term, add this common difference to the last term: 28 + 7 = 35."
+    },
+    {
+      "question_number": 3,
+      "correct_answer": "C",
+      "explanation": "The formula for the sum of an arithmetic sequence is S_n = (n/2) * (2a + (n-1)d). In this case, a = 3, d = 4, and n = 6. Plugging these values into the formula gives: S_6 = (6/2) * (2*3 + (6-1)*4) = 3 * (6 + 18) = 3 * 24 = 72. However, since the terms are increasing by 4, the 6th term is actually one more than a multiple of 4 less than the calculated sum. Therefore, S_6 = 72 - 4 = 68."
+    },
+    {
+      "question_number": 4,
+      "correct_answer": "A",
+      "explanation": "An arithmetic sequence has a constant difference between terms, but it does NOT have to start with the first term (the first term is often referred to as 'a', but any number can be the starting point of an arithmetic sequence)."
+    },
+    {
+      "question_number": 5,
+      "correct_answer": "A",
+      "explanation": "In a geometric sequence, the ratio between any two terms is equal to the common ratio. So, the ratio between the second and fifth terms in this sequence is: (second term / fifth term) = (ratio^2) / (ratio^4) = 3^2 / 3^4 = 9 / 81 = 1/9."
+    },
+    {
+      "question_number": 6,
+      "correct_answer": "C",
+      "explanation": "The fifteenth term (an) is not directly determined in an arithmetic sequence without knowing the number of terms (n)."
+    },
+    {
+      "question_number": 7,
+      "correct_answer": "C",
+      "explanation": "The common difference between terms is 3, so the next term should be 9 + 3 = 12 + 3 = 15 + 3 = 18."
+    },
+    {
+      "question_number": 8,
+      "correct_answer": "B",
+      "explanation": "Let's call the common difference 'd'. We know: 7*a1 + 6*(a1 + d) = 49 and 6*a1 + 5*(a1 + d) = 36. Solving these equations, we find that d = 3."
+    },
+    {
+      "question_number": 9,
+      "correct_answer": "C",
+      "explanation": "The sixth term in a geometric sequence can be found by multiplying the first term by the common ratio raised to the power 5 (ar6 = a1 * r^5)."
+    },
+    {
+      "question_number": 10,
+      "correct_answer": "D",
+      "explanation": "The sum of an infinite geometric series (S) is given by S = a1 / (1 - r), where 'r' is the common ratio. However, this calculation only provides an approximated value for the series sum in most cases."
+    },
+    {
+      "question_number": 11,
+      "correct_answer": "C",
+      "explanation": "In a valid arithmetic sequence, the difference between any two consecutive terms is constant. In option C, the sequence starts with 5 instead of the expected first term, which would be 5 - 5*2 = 1."
+    },
+    {
+      "question_number": 12,
+      "correct_answer": "B",
+      "explanation": "For an arithmetic sequence with a common difference of 5, the nth term can be calculated using the formula a_n = a_1 + (n-1)d. Solving for the first term gives us a_1 = 37 - 5*(4) = 15."
+    },
+    {
+      "question_number": 13,
+      "correct_answer": "D",
+      "explanation": "For an arithmetic sequence with a common difference of 4, the sum of n terms can be calculated using the formula S_n = n*(2a_1 + (n-1)d), where a_1 is the first term and d is the common difference. In this case, we have a_1 = 3 and d = 4. Calculating the sum gives us S_20 = 20*(2*3 + 19*4) = 220."
+    },
+    {
+      "question_number": 14,
+      "correct_answer": "A",
+      "explanation": "In a geometric sequence, each term is found by multiplying the previous term by a constant factor. In option A, the ratio between consecutive terms is always 2 (i.e., 2/1 = 2)."
+    },
+    {
+      "question_number": 15,
+      "correct_answer": "B",
+      "explanation": "For a geometric sequence, the ratio between any two consecutive terms is constant. If we let r be the common ratio, then we can calculate the fourth term as 8 = 16*r^(3-1). Solving for the common ratio gives us r = 3."
+    },
+    {
+      "question_number": 16,
+      "correct_answer": "A",
+      "explanation": "The sequence has a constant difference between terms."
+    },
+    {
+      "question_number": 17,
+      "correct_answer": "A",
+      "explanation": "If the 10th term is 48 and the common difference is 4, we can find the first term using the formula a_n = a_1 + (n-1)d. Solving for a_1 gives us a_1 = 48 - 9 * 4 = 6."
+    },
+    {
+      "question_number": 18,
+      "correct_answer": "B",
+      "explanation": "The sequence has a constant square ratio between terms."
+    },
+    {
+      "question_number": 19,
+      "correct_answer": "C",
+      "explanation": "We can find the sixth term using the formula a_n = a_1 * (r^(n-1)). Solving for a_6 gives us a_6 = 8 * (3^4) = 216."
+    },
+    {
+      "question_number": 20,
+      "correct_answer": "B",
+      "explanation": "There is no guarantee that the sum of an arithmetic sequence will always be less than the sum of its terms. The sum depends on the specific terms and number of terms (n)."
+    },
+    {
+      "question_number": 21,
+      "correct_answer": "D",
+      "explanation": "A constant sequence does not change, so it is not a type of sequence."
+    },
+    {
+      "question_number": 22,
+      "correct_answer": "A",
+      "explanation": "The sequence increases by 4 each time, so the next term is 15 + 4 = 19."
+    },
+    {
+      "question_number": 23,
+      "correct_answer": "B",
+      "explanation": "The common ratio is the value that each term is multiplied by to get the next term. In this case, it's 3 because 6/2 = 3 and 18/6 = 3."
+    },
+    {
+      "question_number": 24,
+      "correct_answer": "A",
+      "explanation": "Since the common difference is 3, we can find the fifth term (21) and subtract the first term (5). Then, we divide by the common difference to find the number of terms. In this case, 21 - 5 = 16 and 16 / 3 = 5.3333... So there are approximately 6 terms (rounding down since it's an integer question). The sum S_n of an arithmetic sequence is given by S_n = n * (2a + (n-1)d), where a is the first term, d is the common difference, and n is the number of terms. Here, n=6, a=5, and d=3, so S_n = 6 * (2*5 + (6-1)*3) = 6 * (10+12) = 72 + 72 = 144. However, since the question asks for the sum of the first 5 terms, we only need the sum up to the fifth term, which is S_5 = 5 * (2*5 + 4*3) = 5 * (10+12) = 60."
+    },
+    {
+      "question_number": 25,
+      "correct_answer": "D",
+      "explanation": "For an infinite geometric sequence, the sum S is given by S = a / (1 - r), where a is the first term and r is the common ratio. Here, a=8 and r=1/2, so S = 8 / (1 - 1/2) = 8 / (1/2) = 16 * 2 = 320."
+    },
+    {
+      "question_number": 26,
+      "correct_answer": "C",
+      "explanation": "The common difference is 5 in sequence C"
+    },
+    {
+      "question_number": 27,
+      "correct_answer": "A",
+      "explanation": "The ratio between terms is 2 in sequence A"
+    },
+    {
+      "question_number": 28,
+      "correct_answer": "A",
+      "explanation": "The sum of n terms in an arithmetic series is (n/2)*(2a + (n-1)d)"
+    },
+    {
+      "question_number": 29,
+      "correct_answer": "A",
+      "explanation": "The sum of an infinite geometric series is a/(1-r), but we need the sum of first n terms, which is a(1 - r^n)/(1 - r)"
+    },
+    {
+      "question_number": 30,
+      "correct_answer": "D",
+      "explanation": "An arithmetic sequence can start with any number."
+    }
+  ]
+}
