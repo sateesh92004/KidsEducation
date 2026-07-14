@@ -1,0 +1,108 @@
+{
+  "paper_number": 2,
+  "grade": "3",
+  "subject": "Maths",
+  "topic": "Multiplication & Division",
+  "answers": [
+    {
+      "question_number": 1,
+      "correct_answer": "B",
+      "explanation": "The result of 4 x 6 is 24 because when we multiply 4 by 6, we are adding 4 together 6 times, which equals 24."
+    },
+    {
+      "question_number": 2,
+      "correct_answer": "B",
+      "explanation": "The bookshelf can hold 5 x 8 = 40 books because each of the 5 shelves can hold 8 books."
+    },
+    {
+      "question_number": 3,
+      "correct_answer": "C",
+      "explanation": "Division is the process of sharing a number into equal parts or groups, which is why option C is the correct answer."
+    },
+    {
+      "question_number": 4,
+      "correct_answer": "B",
+      "explanation": "To find out how many boxes Sara can make, we need to divide 18 by 3, which equals 6, so she can make 6 boxes."
+    },
+    {
+      "question_number": 5,
+      "correct_answer": "B",
+      "explanation": "To find out how many trays the bakery can fill, we divide 24 cookies by 4 cookies per tray, which equals 6 trays."
+    },
+    {
+      "question_number": 6,
+      "correct_answer": "D",
+      "explanation": "Since we have 4 groups of 6 pencils, we multiply 4 by 6 to get 24 pencils."
+    },
+    {
+      "question_number": 7,
+      "correct_answer": "D",
+      "explanation": "To find the total number of books the bookshelf can hold, we multiply the number of shelves by the number of books each shelf can hold: 5 shelves * 8 books/shelf = 40 books."
+    },
+    {
+      "question_number": 8,
+      "correct_answer": "C",
+      "explanation": "Division is the process of sharing a number into equal parts or groups, which is why option C is the correct answer."
+    },
+    {
+      "question_number": 9,
+      "correct_answer": "C",
+      "explanation": "To find out how many boxes Sara can make, we divide the total number of crayons by the number of crayons per box: 18 crayons / 3 crayons/box = 6 boxes."
+    },
+    {
+      "question_number": 10,
+      "correct_answer": "B",
+      "explanation": "To determine the number of boxes needed, we divide the total number of cookies by the number of cookies per box: 24 cookies / 4 cookies/box = 6 boxes."
+    },
+    {
+      "question_number": 11,
+      "correct_answer": "B",
+      "explanation": "Because 4 groups of 6 are 24 in total."
+    },
+    {
+      "question_number": 12,
+      "correct_answer": "C",
+      "explanation": "Because 5 shelves multiplied by 8 books per shelf equals 40 books."
+    },
+    {
+      "question_number": 13,
+      "correct_answer": "C",
+      "explanation": "Because division is the process of sharing or grouping a number into equal parts."
+    },
+    {
+      "question_number": 14,
+      "correct_answer": "C",
+      "explanation": "Because 18 divided by 3 equals 6, so Sara can fill 6 boxes."
+    },
+    {
+      "question_number": 15,
+      "correct_answer": "D",
+      "explanation": "Because 3 times 4 blocks equals 12, and 12 plus the original 12 blocks equals 24, but since it's extended 3 times, the correct calculation is 12 + (3 * 4) = 12 + 12 = 24, however, this calculation was incorrect. The correct one should be: the track is extended by 4 blocks 3 times, so that's 3 * 4 = 12 blocks added, and 12 + 12 = 24 blocks, but this doesn't consider the extension correctly. The initial length is 12, and 4 blocks are added 3 times, so 12 + 4 * 3 = 12 + 12 = 24. The error was in misinterpreting the question's requirement for the total length after extensions. The initial track length is indeed 12, and it is extended by 4 blocks 3 times, which means 4 * 3 = 12 blocks are added to the initial 12, making the total 24 blocks long."
+    },
+    {
+      "question_number": 16,
+      "correct_answer": "B",
+      "explanation": "The result of 4 x 6 is 24 because when we multiply 4 by 6, we are adding 4 together 6 times, which equals 24."
+    },
+    {
+      "question_number": 17,
+      "correct_answer": "C",
+      "explanation": "Sara has 3 groups of 5 pencils, so we multiply 3 by 5 to find the total number of pencils, which is 15."
+    },
+    {
+      "question_number": 18,
+      "correct_answer": "C",
+      "explanation": "Division is the process of sharing a number into equal parts or groups, which is why option C is the correct definition."
+    },
+    {
+      "question_number": 19,
+      "correct_answer": "C",
+      "explanation": "To find the total number of books the bookshelf can hold, we multiply the number of shelves by the number of books each shelf can hold, which is 5 x 8 = 40."
+    },
+    {
+      "question_number": 20,
+      "correct_answer": "B",
+      "explanation": "To find the number of sections, we divide the total length of the track by the length of each section, which is 12 \u00f7 4 = 3."
+    }
+  ]
+}

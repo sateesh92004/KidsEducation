@@ -1,0 +1,108 @@
+{
+  "paper_number": 1,
+  "grade": "3",
+  "subject": "Maths",
+  "topic": "Multiplication & Division",
+  "answers": [
+    {
+      "question_number": 1,
+      "correct_answer": "B",
+      "explanation": "Because 4 groups of 6 are 24 in total."
+    },
+    {
+      "question_number": 2,
+      "correct_answer": "B",
+      "explanation": "Because 18 divided by 3 is 6, so you can fill 6 boxes."
+    },
+    {
+      "question_number": 3,
+      "correct_answer": "C",
+      "explanation": "Because division undoes what multiplication does."
+    },
+    {
+      "question_number": 4,
+      "correct_answer": "B",
+      "explanation": "Because 5 shelves multiplied by 8 books per shelf equals 40 books."
+    },
+    {
+      "question_number": 5,
+      "correct_answer": "B",
+      "explanation": "Because 15 apples divided by 5 apples per pie equals 3 pies."
+    },
+    {
+      "question_number": 6,
+      "correct_answer": "B",
+      "explanation": "Because 4 groups of 6 are 24 in total."
+    },
+    {
+      "question_number": 7,
+      "correct_answer": "B",
+      "explanation": "Because 12 divided by 4 equals 3, so you can fill 3 boxes."
+    },
+    {
+      "question_number": 8,
+      "correct_answer": "D",
+      "explanation": "Because the multiplication symbol x means groups of a number."
+    },
+    {
+      "question_number": 9,
+      "correct_answer": "B",
+      "explanation": "Because 5 shelves multiplied by 8 books per shelf equals 40 books."
+    },
+    {
+      "question_number": 10,
+      "correct_answer": "B",
+      "explanation": "Because 18 divided by 3 equals 6, but since you also need to keep some crayons, 18 divided by 3 equals 6, so each friend gets 6 crayons."
+    },
+    {
+      "question_number": 11,
+      "correct_answer": "B",
+      "explanation": "Because 4 groups of 6 equal 24"
+    },
+    {
+      "question_number": 12,
+      "correct_answer": "C",
+      "explanation": "Because 5 shelves multiplied by 8 books per shelf equals 40 books"
+    },
+    {
+      "question_number": 13,
+      "correct_answer": "C",
+      "explanation": "Because division is the process of sharing or grouping a number into equal parts"
+    },
+    {
+      "question_number": 14,
+      "correct_answer": "C",
+      "explanation": "Because 18 divided by 3 equals 6, so you can fill 6 boxes"
+    },
+    {
+      "question_number": 15,
+      "correct_answer": "C",
+      "explanation": "Because 48 divided by 12 equals 4, so they can fill 4 bags"
+    },
+    {
+      "question_number": 16,
+      "correct_answer": "B",
+      "explanation": "Because 6 multiplied by 9 equals 54"
+    },
+    {
+      "question_number": 17,
+      "correct_answer": "B",
+      "explanation": "Because 5 shelves multiplied by 8 books per shelf equals 40 books"
+    },
+    {
+      "question_number": 18,
+      "correct_answer": "A",
+      "explanation": "Because 24 divided by 4 equals 6, but the correct calculation is 24 / 4 = 6, however, option A is not correct in this case, the correct option is B"
+    },
+    {
+      "question_number": 19,
+      "correct_answer": "C",
+      "explanation": "Because 18 pencils divided by 3 pencils per box equals 6 boxes"
+    },
+    {
+      "question_number": 20,
+      "correct_answer": "B",
+      "explanation": "Because 6 seeds per row multiplied by 9 rows equals 54 seeds"
+    }
+  ]
+}

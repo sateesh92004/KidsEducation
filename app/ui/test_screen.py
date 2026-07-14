@@ -161,10 +161,19 @@ class TestScreen(BaseWindow):
         central_widget.setLayout(main_layout)
 
     def load_questions(self):
-        """Load questions from question service"""
-        self.questions = self.question_service.get_formatted_questions(
-            self.grade, self.subject, self.topic, self.paper_num
+        """Load questions from question service (user-specific unused questions)"""
+        # Use new method that selects unused questions for this user
+        result = self.question_service.get_test_questions_for_user(
+            self.username, self.grade, self.subject, self.topic
         )
+        
+        if "error" in result:
+            QMessageBox.critical(self, "Not Enough Questions", result["error"])
+            self.go_back()
+            return
+            
+        self.questions = result.get("questions", [])
+        self.paper_num = result.get("paper_number", 1)
         
         if not self.questions:
             QMessageBox.critical(self, "Error", "Failed to load questions.")
@@ -255,8 +264,8 @@ class TestScreen(BaseWindow):
                 self.question_layout.addWidget(radio_btn)
                 
                 # Check if we have a saved answer for this question
-                if q['question_number'] in self.user_answers:
-                    if self.user_answers[q['question_number']] == key:
+                if question['question_number'] in self.user_answers:
+                    if self.user_answers[question['question_number']] == key:
                         radio_btn.setChecked(True)
         
         self.question_layout.addStretch()
@@ -265,13 +274,12 @@ class TestScreen(BaseWindow):
         progress = ((self.current_question_index + 1) / len(self.questions)) * 100
         self.progress_bar.setValue(int(progress))
         
-        # Update question label
-        self.question_label.setText(f"Question {self.current_question_index + 1} of {len(self.questions)}")
-        
         # Update button states
         self.prev_btn.setEnabled(self.current_question_index > 0)
         self.next_btn.setEnabled(self.current_question_index < len(self.questions) - 1)
-        self.next_btn.setVisible(self.current_question_index < len(self.questions) - 1)
+        # Always show submit button
+        self.submit_btn.setVisible(True)
+        self.submit_btn.setEnabled(True)
 
     def save_current_answer(self):
         """Save the current selected answer"""
@@ -315,16 +323,25 @@ class TestScreen(BaseWindow):
                 return
         
         # Process and save test
+        # Pass self.questions instead of paper_num
         result = self.score_service.process_and_save_test(
             self.username,
             self.grade,
             self.subject,
             self.topic,
-            self.paper_num,
+            self.questions,
             self.user_answers
         )
         
         if result["success"]:
+            # Mark these questions as answered by this user
+            # We need question IDs now
+            question_ids = [q.get('id') for q in self.questions if q.get('id')]
+            if question_ids:
+                self.question_service.mark_questions_answered(
+                    self.username, self.grade, self.subject, self.topic, question_ids
+                )
+            
             # Show detailed results screen instead of just a message
             self.show_detailed_results(result)
         else:

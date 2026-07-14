@@ -1,0 +1,183 @@
+{
+  "paper_number": 1,
+  "grade": "3",
+  "subject": "Maths",
+  "topic": "Measurements",
+  "answers": [
+    {
+      "question_number": 1,
+      "correct_answer": "B",
+      "explanation": "A ruler is primarily used to measure the length of objects, making option B the correct answer."
+    },
+    {
+      "question_number": 2,
+      "correct_answer": "A",
+      "explanation": "Since 1 centimeter equals 10 millimeters, 15 centimeters equals 15 * 10 = 150 millimeters, making option A the correct answer."
+    },
+    {
+      "question_number": 3,
+      "correct_answer": "B",
+      "explanation": "The capacity of a water bottle is typically measured in liters, making option B the correct answer."
+    },
+    {
+      "question_number": 4,
+      "correct_answer": "B",
+      "explanation": "Since 1 meter equals 100 centimeters, 2 meters equals 2 * 100 = 200 centimeters, making option B the correct answer."
+    },
+    {
+      "question_number": 5,
+      "correct_answer": "C",
+      "explanation": "The term 'kilogram' measures weight or mass, making option C the correct answer."
+    },
+    {
+      "question_number": 6,
+      "correct_answer": "B",
+      "explanation": "Centimeters are used to measure the length of small objects like pencils."
+    },
+    {
+      "question_number": 7,
+      "correct_answer": "C",
+      "explanation": "Since the bucket needs 5 cups in total and you already have 2 cups, you need 5 - 2 = 3 more cups to fill the bucket."
+    },
+    {
+      "question_number": 8,
+      "correct_answer": "C",
+      "explanation": "Capacity is the amount of liquid that a container can hold, like the amount of water a bottle can hold."
+    },
+    {
+      "question_number": 9,
+      "correct_answer": "C",
+      "explanation": "Since 1 meter equals 100 centimeters, 15 meters equals 15 * 100 = 1500 centimeters."
+    },
+    {
+      "question_number": 10,
+      "correct_answer": "C",
+      "explanation": "A balance is used to measure the weight or heaviness of an object, like a scale in a kitchen."
+    },
+    {
+      "question_number": 11,
+      "correct_answer": "C",
+      "explanation": "Centimeters are used to measure the length of small objects like pencils."
+    },
+    {
+      "question_number": 12,
+      "correct_answer": "B",
+      "explanation": "The water bottle's capacity is 2 liters, so it can hold 2 liters of water when empty."
+    },
+    {
+      "question_number": 13,
+      "correct_answer": "A",
+      "explanation": "Perimeter is the distance around a shape, while area is the space inside the shape."
+    },
+    {
+      "question_number": 14,
+      "correct_answer": "B",
+      "explanation": "To find the height of each part, divide the total height (180 cm) by the number of parts (6), which gives 30 cm."
+    },
+    {
+      "question_number": 15,
+      "correct_answer": "B",
+      "explanation": "To find out how many times to fill the cup, divide the required amount (250 ml) by the cup's capacity (100 ml), which gives 2.5 times."
+    },
+    {
+      "question_number": 16,
+      "correct_answer": "B",
+      "explanation": "To find the space left, subtract the total height of the books (3 * 20 = 60 cm) from the bookshelf's height (180 cm), which gives 180 - 60 = 120 cm."
+    },
+    {
+      "question_number": 17,
+      "correct_answer": "A",
+      "explanation": "Since 1 meter equals 100 centimeters, 5 meters equals 500 centimeters. Therefore, your track (500 cm) is longer than your friend's track (300 cm)."
+    },
+    {
+      "question_number": 18,
+      "correct_answer": "D",
+      "explanation": "To fill one bucket, it takes 5 cups, so to fill 3 buckets, it will take 3 x 5 = 15 cups."
+    },
+    {
+      "question_number": 19,
+      "correct_answer": "A",
+      "explanation": "If you drink 0.5 liters from a 1-liter bottle, you have 1 - 0.5 = 0.5 liters left, which is half of the bottle, or 1/2."
+    },
+    {
+      "question_number": 20,
+      "correct_answer": "D",
+      "explanation": "If the bottle is filled twice, it will hold 2 + 2 = 4 liters of water."
+    },
+    {
+      "question_number": 21,
+      "correct_answer": "B",
+      "explanation": "Non-standard units are not typically used in everyday measurements, and footsteps are an example of this, as the length of a foot can vary from person to person."
+    },
+    {
+      "question_number": 22,
+      "correct_answer": "B",
+      "explanation": "To find out how many books can fit, we divide the height of the bookshelf by the height of one book: 180 cm / 15 cm = 12 books."
+    },
+    {
+      "question_number": 23,
+      "correct_answer": "A",
+      "explanation": "Since 1 meter equals 100 centimeters, 180 centimeters equals 1.8 meters."
+    },
+    {
+      "question_number": 24,
+      "correct_answer": "D",
+      "explanation": "Since one water bottle can hold 2 liters, 4 water bottles can hold 2 liters * 4 = 8 liters."
+    },
+    {
+      "question_number": 25,
+      "correct_answer": "B",
+      "explanation": "To make half the amount of cookies, you will need half the amount of flour, which is 250 / 2 = 125 grams."
+    },
+    {
+      "question_number": 26,
+      "correct_answer": "A",
+      "explanation": "A ruler is a common tool used in classrooms to measure the length of objects in centimeters or inches."
+    },
+    {
+      "question_number": 27,
+      "correct_answer": "B",
+      "explanation": "The weight of a small toy car would typically be measured in grams, as it is a small unit of mass suitable for lightweight objects."
+    },
+    {
+      "question_number": 28,
+      "correct_answer": "A",
+      "explanation": "If the bottle is half full, it contains half of its total capacity, which is 2 liters / 2 = 1 liter."
+    },
+    {
+      "question_number": 29,
+      "correct_answer": "B",
+      "explanation": "To find the total capacity of the bucket, multiply the number of cups by the capacity of each cup: 5 cups * 200 milliliters/cup = 1000 milliliters."
+    },
+    {
+      "question_number": 30,
+      "correct_answer": "B",
+      "explanation": "Since the bottle can hold 1 liter and 0.5 liters are already in it, half of the bottle is filled, which is 1/2."
+    },
+    {
+      "question_number": 31,
+      "correct_answer": "B",
+      "explanation": "To find out how many books can be stacked, we need to divide the height of the bookshelf (180 cm) by the height of the book (15 cm). 180 cm / 15 cm = 12 books."
+    },
+    {
+      "question_number": 32,
+      "correct_answer": "C",
+      "explanation": "Since 1 liter is equal to 1000 milliliters, the water bottle can hold 1000 milliliters of water."
+    },
+    {
+      "question_number": 33,
+      "correct_answer": "C",
+      "explanation": "To fill one jug, you need 5 cups. To fill 3 jugs, you will need 3 x 5 = 15 cups, making option C the correct answer."
+    },
+    {
+      "question_number": 34,
+      "correct_answer": "B",
+      "explanation": "A pencil is very light, so we would use grams to measure its weight, making option B the correct answer."
+    },
+    {
+      "question_number": 35,
+      "correct_answer": "C",
+      "explanation": "To find the total length, multiply the length of one bookshelf by the number of bookshelves: 1.8 x 5 = 9 meters, making option D the correct answer, however since the option D was 9 and not another value, the correct value is indeed 9 but was labeled as option D, not option C, the mistake was in the options."
+    }
+  ]
+}

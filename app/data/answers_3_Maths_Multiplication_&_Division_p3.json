@@ -1,0 +1,108 @@
+{
+  "paper_number": 3,
+  "grade": "3",
+  "subject": "Maths",
+  "topic": "Multiplication & Division",
+  "answers": [
+    {
+      "question_number": 1,
+      "correct_answer": "B",
+      "explanation": "Because when we multiply 4 by 6, we are adding 4 together 6 times: 4 + 4 + 4 + 4 + 4 + 4 = 24"
+    },
+    {
+      "question_number": 2,
+      "correct_answer": "C",
+      "explanation": "Because we multiply the number of shelves by the number of books each shelf can hold: 5 x 8 = 40"
+    },
+    {
+      "question_number": 3,
+      "correct_answer": "C",
+      "explanation": "Because division is the operation of sharing or grouping a number into equal parts"
+    },
+    {
+      "question_number": 4,
+      "correct_answer": "C",
+      "explanation": "Because we divide the total number of pencils by the number of pencils each box can hold: 18 \u00f7 3 = 6"
+    },
+    {
+      "question_number": 5,
+      "correct_answer": "B",
+      "explanation": "Because we divide the total length of the track by the length of each section: 12 \u00f7 2 = 6"
+    },
+    {
+      "question_number": 6,
+      "correct_answer": "B",
+      "explanation": "Because 4 groups of 6 are 24 in total."
+    },
+    {
+      "question_number": 7,
+      "correct_answer": "B",
+      "explanation": "Because 5 shelves multiplied by 8 books per shelf equals 40 books."
+    },
+    {
+      "question_number": 8,
+      "correct_answer": "B",
+      "explanation": "Because division is the process of sharing or grouping a number into equal parts."
+    },
+    {
+      "question_number": 9,
+      "correct_answer": "B",
+      "explanation": "Because 18 pencils divided by 3 pencils per box equals 6 boxes."
+    },
+    {
+      "question_number": 10,
+      "correct_answer": "C",
+      "explanation": "Because 48 cookies divided by 6 cookies per pack equals 8 packs."
+    },
+    {
+      "question_number": 11,
+      "correct_answer": "B",
+      "explanation": "Because 4 groups of 6 are 24 in total."
+    },
+    {
+      "question_number": 12,
+      "correct_answer": "B",
+      "explanation": "Because 12 divided by 4 is 3, so Sara can make 3 boxes."
+    },
+    {
+      "question_number": 13,
+      "correct_answer": "B",
+      "explanation": "Because 3 multiplied by 8 is 24, so the missing number is 8."
+    },
+    {
+      "question_number": 14,
+      "correct_answer": "C",
+      "explanation": "Because 5 shelves multiplied by 8 books per shelf is 40 books in total."
+    },
+    {
+      "question_number": 15,
+      "correct_answer": "C",
+      "explanation": "Because 12 feet divided by 2 feet per section is 6 sections."
+    },
+    {
+      "question_number": 16,
+      "correct_answer": "D",
+      "explanation": "4 groups of 6 pencils means 4 x 6, which equals 24 pencils"
+    },
+    {
+      "question_number": 17,
+      "correct_answer": "D",
+      "explanation": "The bookshelf has 5 shelves, and each shelf can hold 8 books, so 5 x 8 = 40 books"
+    },
+    {
+      "question_number": 18,
+      "correct_answer": "C",
+      "explanation": "To find the number of boxes, divide the total number of crayons by the number of crayons per box: 18 \u00f7 3 = 6 boxes"
+    },
+    {
+      "question_number": 19,
+      "correct_answer": "D",
+      "explanation": "The multiplication symbol represents groups of a certain number, like 3 groups of 4"
+    },
+    {
+      "question_number": 20,
+      "correct_answer": "C",
+      "explanation": "To find the number of boxes needed, divide the total number of cupcakes by the number of cupcakes per box: 24 \u00f7 4 = 6 boxes"
+    }
+  ]
+}

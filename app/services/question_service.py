@@ -1,253 +1,105 @@
-"""Question Management Service"""
+"""Question Service - Manages question retrieval and validation"""
 
-import os
-import json
-from typing import List, Dict, Tuple
-from utils.excel_handler import ExcelHandler
-from utils.constants import BASE_DATA_PATH, QUESTIONS_PER_PAPER
-from services.llm_service import LLMService
-
+from typing import Dict, List, Optional
+from services.db_question_service import DBQuestionService
+from services.paper_generation_agent import PaperGenerationAgent
+from services.db_user_service import DBUserService
 
 class QuestionService:
-    """Service for managing questions and papers"""
+    """Service for managing questions using Database"""
 
     def __init__(self):
-        self.llm_service = LLMService()
+        self.db_service = DBQuestionService()
+        self.paper_agent = PaperGenerationAgent()
+        self.user_service = DBUserService()
 
-    def get_question_paper_filename(self, grade: str, subject: str, topic: str, paper_num: int) -> str:
-        """Get filename for a question paper"""
-        safe_topic = topic.replace(" ", "_").replace("/", "_")
-        return f"paper_{grade}_{subject}_{safe_topic}_p{paper_num}.json"
+    def generate_questions(self, grade: str, subject: str, topic: str) -> bool:
+        """Generate questions using the agent (which saves to DB)"""
+        papers = self.paper_agent.generate_papers_parallel(grade, subject, topic)
+        return len(papers) > 0
 
-    def get_answer_key_filename(self, grade: str, subject: str, topic: str, paper_num: int) -> str:
-        """Get filename for answer key"""
-        safe_topic = topic.replace(" ", "_").replace("/", "_")
-        return f"answers_{grade}_{subject}_{safe_topic}_p{paper_num}.json"
-
-    def save_paper_to_json(self, grade: str, subject: str, topic: str, questions_data: Dict) -> Tuple[bool, str]:
-        """Save generated question paper to JSON file"""
-        try:
-            os.makedirs(BASE_DATA_PATH, exist_ok=True)
+    def get_test_questions_for_user(self, username: str, grade: str, subject: str, topic: str) -> Dict:
+        """
+        Get 20 unique questions for a user from the database
+        """
+        user = self.user_service.get_user_by_username(username)
+        if not user:
+            return {"error": "User not found"}
             
-            paper_num = questions_data.get("paper_number", 1)
-            filename = self.get_question_paper_filename(grade, subject, topic, paper_num)
-            filepath = os.path.join(BASE_DATA_PATH, filename)
+        questions, error = self.db_service.get_test_questions_for_user(
+            user['id'], grade, subject, topic, limit=20
+        )
+        
+        if error:
+            return {"error": error}
             
-            with open(filepath, 'w') as f:
-                json.dump(questions_data, f, indent=2)
-            
-            return True, filepath
-        except Exception as e:
-            return False, str(e)
-
-    def save_answer_key(self, grade: str, subject: str, topic: str, questions_data: Dict) -> Tuple[bool, str]:
-        """Extract and save answer key separately"""
-        try:
-            os.makedirs(BASE_DATA_PATH, exist_ok=True)
-            
-            paper_num = questions_data.get("paper_number", 1)
-            filename = self.get_answer_key_filename(grade, subject, topic, paper_num)
-            filepath = os.path.join(BASE_DATA_PATH, filename)
-            
-            # Extract answers only
-            answer_key = {
-                "paper_number": paper_num,
-                "grade": grade,
-                "subject": subject,
-                "topic": topic,
-                "answers": []
-            }
-            
-            for q in questions_data.get("questions", []):
-                answer_key["answers"].append({
-                    "question_number": q.get("question_number"),
-                    "correct_answer": q.get("correct_answer"),
-                    "explanation": q.get("explanation", "")
-                })
-            
-            with open(filepath, 'w') as f:
-                json.dump(answer_key, f, indent=2)
-            
-            return True, filepath
-        except Exception as e:
-            return False, str(e)
-
-    def generate_papers_for_topic(self, grade: str, subject: str, topic: str) -> Dict:
-        """Generate multiple papers for a topic and save them"""
-        result = {
-            "success": False,
-            "message": "",
-            "papers_generated": 0,
-            "papers": []
+        return {
+            "questions": questions,
+            "paper_number": 1,  # Legacy field
+            "total_questions": len(questions)
         }
-        
-        try:
-            # Check Ollama connection
-            if not self.llm_service.check_ollama_connection():
-                result["message"] = "Error: Ollama is not running. Please start Ollama first."
-                return result
-            
-            # Generate papers
-            papers = self.llm_service.generate_multiple_papers(grade, subject, topic)
-            
-            if not papers:
-                result["message"] = "Failed to generate question papers. Please try again."
-                return result
-            
-            # Save papers and answer keys
-            for paper_data in papers:
-                if paper_data:
-                    # Save paper
-                    success, path = self.save_paper_to_json(grade, subject, topic, paper_data)
-                    if not success:
-                        continue
-                    
-                    # Save answer key
-                    ans_success, ans_path = self.save_answer_key(grade, subject, topic, paper_data)
-                    
-                    if success and ans_success:
-                        result["papers"].append({
-                            "paper_number": paper_data.get("paper_number"),
-                            "paper_path": path,
-                            "answer_key_path": ans_path
-                        })
-                        result["papers_generated"] += 1
-            
-            if result["papers_generated"] > 0:
-                result["success"] = True
-                result["message"] = f"Successfully generated {result['papers_generated']} question papers!"
-            else:
-                result["message"] = "Failed to save generated papers."
-            
-            return result
-        except Exception as e:
-            result["message"] = f"Error: {str(e)}"
-            return result
 
-    def load_paper(self, grade: str, subject: str, topic: str, paper_num: int) -> Dict:
-        """Load a question paper from JSON file"""
-        try:
-            filename = self.get_question_paper_filename(grade, subject, topic, paper_num)
-            filepath = os.path.join(BASE_DATA_PATH, filename)
-            
-            if not os.path.exists(filepath):
-                return None
-            
-            with open(filepath, 'r') as f:
-                return json.load(f)
-        except Exception as e:
-            print(f"Error loading paper: {e}")
-            return None
+    def mark_questions_answered(self, username: str, grade: str, subject: str, topic: str, question_ids: List[int]):
+        """Mark questions as answered by user"""
+        user = self.user_service.get_user_by_username(username)
+        if user:
+            self.db_service.mark_questions_as_answered(user['id'], question_ids)
 
-    def load_answer_key(self, grade: str, subject: str, topic: str, paper_num: int) -> Dict:
-        """Load answer key from JSON file"""
-        try:
-            filename = self.get_answer_key_filename(grade, subject, topic, paper_num)
-            filepath = os.path.join(BASE_DATA_PATH, filename)
-            
-            if not os.path.exists(filepath):
-                return None
-            
-            with open(filepath, 'r') as f:
-                return json.load(f)
-        except Exception as e:
-            print(f"Error loading answer key: {e}")
-            return None
-
-    def get_available_papers(self, grade: str, subject: str, topic: str) -> List[int]:
-        """Get list of available paper numbers for a topic"""
-        papers = []
-        
-        for i in range(1, 31):  # Check for up to 30 papers
-            if self.load_paper(grade, subject, topic, i) is not None:
-                papers.append(i)
-            else:
-                # If we reach 10+ without finding one, assume we're done
-                if i > 10 and not papers:
-                    break
-        
-        return papers
-
-    def get_available_topics(self, grade: str, subject: str) -> List[str]:
-        """Discover available topics by scanning saved papers"""
-        topics = set()
-        
-        try:
-            if not os.path.exists(BASE_DATA_PATH):
-                return []
-            
-            # Scan all JSON files in the data directory
-            for filename in os.listdir(BASE_DATA_PATH):
-                if filename.startswith('paper_') and filename.endswith('.json'):
-                    # Parse filename: paper_Grade_Subject_Topic_p1.json
-                    parts = filename.replace('paper_', '').replace('.json', '').split('_')
-                    
-                    if len(parts) >= 3:
-                        file_grade = parts[0]
-                        file_subject = parts[1]
-                        # Topic is everything except the last part (which is paper number pX)
-                        file_topic = '_'.join(parts[2:-1]).replace('_', ' ')
-                        
-                        # Match grade and subject
-                        if file_grade == grade and file_subject == subject:
-                            if file_topic and self.get_available_papers(grade, subject, file_topic):
-                                topics.add(file_topic)
-            
-            return sorted(list(topics))
-        except Exception as e:
-            print(f"Error discovering topics: {e}")
-            return []
-
-    def get_formatted_questions(self, grade: str, subject: str, topic: str, paper_num: int) -> List[Dict]:
-        """Get questions formatted for display"""
-        paper = self.load_paper(grade, subject, topic, paper_num)
-        
-        if not paper:
-            return []
-        
-        formatted = []
-        for q in paper.get("questions", []):
-            formatted.append({
-                "question_number": q.get("question_number"),
-                "question_text": q.get("question_text"),
-                "options": q.get("options", {}),
-                "paper_num": paper_num
-            })
-        
-        return formatted
-
-    def validate_answers(self, grade: str, subject: str, topic: str, paper_num: int, 
-                        user_answers: Dict[int, str]) -> Dict:
-        """Validate user answers against answer key"""
-        answer_key = self.load_answer_key(grade, subject, topic, paper_num)
-        
-        if not answer_key:
-            return {"error": "Answer key not found"}
-        
+    def validate_answers(self, questions: List[Dict], user_answers: Dict[int, str]) -> Dict:
+        """
+        Validate user answers against the provided question objects.
+        questions: List of question dicts (must contain 'id', 'question_number', 'correct_answer')
+        user_answers: Dict of {question_number: selected_option}
+        """
         result = {
-            "total_questions": len(answer_key.get("answers", [])),
+            "total_questions": len(user_answers),
             "correct_answers": 0,
+            "wrong_answers": 0,
             "score_percentage": 0,
             "details": []
         }
         
-        for ans in answer_key.get("answers", []):
-            q_num = ans.get("question_number")
-            correct_ans = ans.get("correct_answer")
-            user_ans = user_answers.get(q_num)
-            
+        # Create a map of question_number -> question object
+        q_map = {q['question_number']: q for q in questions}
+        
+        for q_num, user_ans in user_answers.items():
+            question = q_map.get(q_num)
+            if not question:
+                continue
+                
+            correct_ans = question.get('correct_answer')
             is_correct = user_ans == correct_ans
+            
             if is_correct:
                 result["correct_answers"] += 1
-            
+            else:
+                result["wrong_answers"] += 1
+                
             result["details"].append({
+                "id": question.get('id'),  # Important for DB saving
                 "question_number": q_num,
                 "user_answer": user_ans,
                 "correct_answer": correct_ans,
                 "is_correct": is_correct,
-                "explanation": ans.get("explanation", "")
+                "explanation": question.get('explanation', '')
             })
-        
-        result["score_percentage"] = (result["correct_answers"] / result["total_questions"]) * 100
-        
+            
+        if result["total_questions"] > 0:
+            result["score_percentage"] = (result["correct_answers"] / result["total_questions"]) * 100
+            
         return result
+
+    def get_available_topics(self, grade: str, subject: str) -> List[str]:
+        """Get available topics from DB"""
+        return self.db_service.get_available_topics(grade, subject)
+
+    def get_available_papers(self, grade: str, subject: str, topic: str) -> List[int]:
+        """
+        Check if questions exist for this topic.
+        Returns [1] if questions exist, [] otherwise.
+        This mimics the old 'papers' behavior for compatibility.
+        """
+        stats = self.db_service.get_topic_stats(grade, subject, topic)
+        if stats['total_questions'] > 0:
+            return [1] # Return a dummy paper list so UI thinks papers exist
+        return []

@@ -3,7 +3,7 @@
 import requests
 import json
 import re
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Generator
 from utils.constants import OLLAMA_BASE_URL, OLLAMA_MODEL, QUESTIONS_PER_PAPER, PAPERS_PER_GENERATION
 
 
@@ -13,7 +13,8 @@ class LLMService:
     def __init__(self):
         self.base_url = OLLAMA_BASE_URL
         self.model = OLLAMA_MODEL
-        self.batch_size = 5  # Generate 5 questions at a time instead of 30
+        self.batch_size = 5  # 5 questions per batch for faster generation
+        self.retry_attempts = 2  # Retry failed batches
 
     def check_ollama_connection(self) -> bool:
         """Check if Ollama is running and accessible"""
@@ -80,38 +81,43 @@ class LLMService:
 
     def generate_prompt(self, grade: str, subject: str, topic: str, paper_number: int, 
                        batch_number: int, num_questions: int = 5) -> str:
-        """Generate a prompt for LLM to create MCQs"""
-        prompt = f"""You are an expert teacher creating multiple-choice questions.
+        """Generate a prompt for neural-chat to create MCQs"""
+        prompt = f"""You are an expert educator creating multiple-choice questions for Grade {grade} students.
 
-Create exactly {num_questions} MCQs for Grade {grade} {subject} - {topic} (Paper {paper_number}, Batch {batch_number}).
+Generate exactly {num_questions} UNIQUE MCQ questions for: {subject} - {topic}
+Paper #{paper_number}, Section {batch_number}
 
-Rules:
-- Each question must have 4 options (A, B, C, D)
-- Exactly 1 correct answer per question
-- Questions must be clear and appropriate for grade {grade}
-- Include a brief explanation for the correct answer
-- Do NOT include newlines within text fields
-- Do NOT include trailing commas in JSON
+CRITICAL: Each question must be COMPLETELY DIFFERENT from others. Vary:
+- Topics within {topic}
+- Question types (definition, application, problem-solving, analysis)
+- Difficulty levels
+- Real-world scenarios
 
-Return ONLY valid JSON (no extra text):
+For each question, provide:
+1. Clear, age-appropriate question text
+2. Four distinct options (A, B, C, D)
+3. One correct answer
+4. Brief explanation of why the answer is correct
+
+Return ONLY valid JSON in this exact format (no markdown, no explanation):
 {{
     "questions": [
         {{
             "question_number": 1,
-            "question_text": "What is..?",
+            "question_text": "Question here?",
             "options": {{
-                "A": "Option A",
-                "B": "Option B",
-                "C": "Option C",
-                "D": "Option D"
+                "A": "First option",
+                "B": "Second option", 
+                "C": "Third option",
+                "D": "Fourth option"
             }},
             "correct_answer": "A",
-            "explanation": "Explanation here"
+            "explanation": "Why A is correct and why others are wrong"
         }}
     ]
 }}
 
-Generate {num_questions} questions now:"""
+Generate {num_questions} unique questions now:"""
         return prompt
 
     def generate_questions(self, grade: str, subject: str, topic: str, paper_number: int) -> Optional[Dict]:
@@ -136,9 +142,10 @@ Generate {num_questions} questions now:"""
                             "model": self.model,
                             "prompt": prompt,
                             "stream": False,
-                            "temperature": 0.7,
+                            "temperature": 0.6,  # Lower for faster responses
+                            "top_p": 0.9,  # Good quality
                         },
-                        timeout=120  # 2 minutes per batch
+                        timeout=120  # 2 minutes per batch for Mistral speed
                     )
 
                     if response.status_code == 200:
@@ -175,7 +182,10 @@ Generate {num_questions} questions now:"""
                     else:
                         print(f" HTTP {response.status_code}")
                 except requests.exceptions.Timeout:
-                    print(" Timeout - retrying...")
+                    print(" Timeout - retrying with longer wait...")
+                    # Increase timeout for retry
+                    import time
+                    time.sleep(2)
                     continue
                 except Exception as e:
                     print(f" Error: {str(e)[:50]}")
@@ -214,3 +224,55 @@ Generate {num_questions} questions now:"""
                 print(f"Failed to generate paper {paper_num}")
         
         return papers
+
+    def generate_text(self, prompt: str, model: str = None) -> Optional[str]:
+        """Generate text using Ollama (non-streaming)"""
+        try:
+            use_model = model or self.model
+            response = requests.post(
+                f"{self.base_url}/api/generate",
+                json={
+                    "model": use_model,
+                    "prompt": prompt,
+                    "stream": False,
+                    "temperature": 0.7,
+                    "top_p": 0.9,
+                },
+                timeout=120
+            )
+            if response.status_code == 200:
+                return response.json().get("response", "")
+            return None
+        except Exception as e:
+            print(f"Ollama generate_text error: {e}")
+            return None
+
+    def generate_stream(self, prompt: str, model: str = None) -> Generator[str, None, None]:
+        """Generate streaming text using Ollama"""
+        try:
+            use_model = model or self.model
+            response = requests.post(
+                f"{self.base_url}/api/generate",
+                json={
+                    "model": use_model,
+                    "prompt": prompt,
+                    "stream": True,
+                    "temperature": 0.7,
+                    "top_p": 0.9,
+                },
+                timeout=120,
+                stream=True
+            )
+            for line in response.iter_lines():
+                if line:
+                    try:
+                        data = json.loads(line.decode('utf-8'))
+                        chunk = data.get("response", "")
+                        if chunk:
+                            yield chunk
+                        if data.get("done", False):
+                            break
+                    except json.JSONDecodeError:
+                        continue
+        except Exception as e:
+            yield f"\n\n⚠️ Ollama error: {e}"

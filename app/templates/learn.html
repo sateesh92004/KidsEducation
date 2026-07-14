@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Learn - Kids Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Nunito', sans-serif; }
+        .font-fredoka { font-family: 'Fredoka One', cursive; }
+        .fade-in { animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .slide-down { animation: slideDown 0.3s ease-out; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .pulse { animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .content-area h1 { color: #3B82F6; border-bottom: 4px solid #FBBF24; padding-bottom: 12px; font-size: 1.75rem; font-weight: 800; margin-top: 1.5rem; }
+        .content-area h2 { color: #8B5CF6; background: #F3E8FF; padding: 10px 16px; border-radius: 12px; font-size: 1.4rem; font-weight: 700; margin-top: 1.25rem; }
+        .content-area h3 { color: #14B8A6; font-size: 1.15rem; font-weight: 700; margin-top: 1rem; }
+        .content-area p { margin-bottom: 0.8rem; line-height: 1.8; }
+        .content-area ul, .content-area ol { margin-bottom: 0.8rem; padding-left: 1.5rem; }
+        .content-area li { margin-bottom: 0.4rem; }
+        .content-area code { background: #FEF3C7; padding: 2px 8px; border-radius: 6px; color: #EC4899; font-weight: bold; font-size: 0.9rem; border: 1px solid #FBBF24; }
+        .content-area pre { background: #2D3436; color: #F5F5F5; padding: 16px; border-radius: 14px; border: 3px solid #FBBF24; overflow-x: auto; }
+        .content-area blockquote { border-left: 6px solid #FF6B35; background: #FFF3CD; padding: 12px 20px; margin: 1rem 0; border-radius: 0 14px 14px 0; font-style: italic; }
+        .content-area table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+        .content-area th, .content-area td { border: 2px solid #FBBF24; padding: 10px 14px; text-align: left; }
+        .content-area th { background: #3B82F6; color: white; font-weight: bold; }
+        .content-area tr:nth-child(even) { background: #EFF6FF; }
+        .content-area strong { color: #EC4899; }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50 to-pink-50">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 shadow-lg border-b-4 border-yellow-300">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="/dashboard" class="bg-white/30 hover:bg-white/50 w-10 h-10 rounded-full flex items-center justify-center text-white text-xl transition-all">⬅️</a>
+                <h1 class="text-lg font-fredoka text-white drop-shadow">📚 {{ subject }}</h1>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="text-white text-sm bg-white/20 px-3 py-1 rounded-full font-bold">Grade {{ grade }}</span>
+                <span class="text-2xl" id="mascot"></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-4 space-y-4">
+        <!-- Search Section -->
+        <div id="search-section" class="bg-white rounded-3xl shadow-lg p-5 border-4 border-yellow-300 fade-in">
+            <h2 class="font-bold text-gray-700 text-lg mb-3">🔍 What do you want to explore?</h2>
+            <div class="flex gap-3">
+                <input id="topic-input" type="text" placeholder="Photosynthesis, Fractions, Ancient Egypt..." class="flex-1 px-5 py-3 border-3 border-blue-300 rounded-2xl font-bold text-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none">
+                <button onclick="startLearning()" class="px-8 py-3 bg-gradient-to-r from-orange-400 to-orange-500 text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transition-all border-b-4 border-orange-600 whitespace-nowrap">🚀 Explore!</button>
+            </div>
+            {% if topics %}
+            <div class="mt-3">
+                <p class="text-gray-400 text-sm font-bold mb-2">⚡ Quick pick:</p>
+                <div class="flex gap-2 overflow-x-auto pb-2">
+                    {% for t in topics[:15] %}
+                    <button onclick="setTopic('{{ t }}')" class="px-4 py-2 bg-blue-50 text-blue-600 border-2 border-blue-300 rounded-full font-bold text-sm hover:bg-blue-500 hover:text-white transition-all whitespace-nowrap">{{ t }}</button>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Loading -->
+        <div id="loading-section" class="hidden bg-white rounded-3xl shadow-lg p-8 border-4 border-blue-300 text-center fade-in">
+            <div class="text-5xl mb-3 pulse">🔍</div>
+            <p id="loading-text" class="text-gray-500 font-bold text-lg">🤖 AI Teacher is preparing your lesson...</p>
+            <div class="w-full bg-blue-100 rounded-full h-3 mt-4 overflow-hidden">
+                <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-full rounded-full" style="width: 100%; animation: shimmer 1.5s ease-in-out infinite;"></div>
+            </div>
+        </div>
+
+        <!-- Results Area -->
+        <div id="results-section" class="hidden space-y-4 fade-in">
+            <!-- Topic Header -->
+            <div id="topic-header" class="bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl p-4 shadow-lg">
+                <div class="flex items-center gap-3">
+                    <span id="topic-emoji" class="text-2xl">📚</span>
+                    <h2 id="topic-title" class="text-xl font-fredoka text-white drop-shadow">Topic</h2>
+                </div>
+            </div>
+
+            <!-- Fun Facts -->
+            <div id="funfacts-section" class="hidden bg-yellow-50 rounded-3xl p-5 border-4 border-yellow-300">
+                <h3 class="font-fredoka text-gray-700 text-lg mb-3">🌟 Fun Facts!</h3>
+                <div id="funfacts-container" class="space-y-2"></div>
+            </div>
+
+            <!-- Image Gallery -->
+            <div id="gallery-section" class="hidden bg-white rounded-3xl p-5 border-4 border-teal-300">
+                <h3 class="font-bold text-teal-600 text-lg mb-3">🖼️ Visual Explorer</h3>
+                <div id="gallery-container" class="flex gap-3 overflow-x-auto pb-2"></div>
+            </div>
+
+            <!-- LLM Content -->
+            <div class="bg-white rounded-3xl p-5 border-4 border-purple-300">
+                <h3 class="font-bold text-purple-600 text-lg mb-3">🤖 AI Teacher Explains</h3>
+                <div id="content-area" class="content-area text-gray-700 leading-relaxed">
+                    <div class="text-center text-gray-400 py-8">
+                        <div class="text-4xl mb-3 pulse">🤔</div>
+                        <p>Thinking...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Know More -->
+            <button id="more-btn" onclick="loadMore()" class="hidden w-full py-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transition-all border-b-4 border-purple-700">
+                🧠 Know More / Go Deeper 🚀
+            </button>
+
+            <!-- Quiz -->
+            <div id="quiz-section" class="hidden bg-green-50 rounded-3xl p-5 border-4 border-green-300">
+                <h3 class="font-bold text-green-600 text-lg mb-3">🎯 Quick Quiz!</h3>
+                <div id="quiz-container" class="space-y-4"></div>
+            </div>
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-section" class="bg-white rounded-3xl shadow-lg p-8 border-4 border-dashed border-gray-300 text-center fade-in">
+            <div class="text-6xl mb-4">🤖</div>
+            <h2 class="text-2xl font-bold text-gray-500 mb-3">Ready to Learn Something Awesome?</h2>
+            <p class="text-gray-400">Type a topic above and hit 🚀 Explore!<br>I'll find images, fun facts, and teach you everything!</p>
+        </div>
+    </main>
+
+    <style>
+        @keyframes shimmer { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+    </style>
+
+    <script>
+        const mascots = ['🦉', '🤖', '🐱', '🦊', '🐼', '🐨', '🦁', '🐯'];
+        document.getElementById('mascot').textContent = mascots[Math.floor(Math.random() * mascots.length)];
+
+        let currentContent = '';
+        let eventSource = null;
+
+        function setTopic(topic) {
+            document.getElementById('topic-input').value = topic;
+            startLearning();
+        }
+
+        function startLearning() {
+            const topic = document.getElementById('topic-input').value.trim();
+            if (!topic) return;
+
+            currentContent = '';
+            document.getElementById('empty-section').classList.add('hidden');
+            document.getElementById('results-section').classList.add('hidden');
+            document.getElementById('search-section').classList.add('hidden');
+            document.getElementById('loading-section').classList.remove('hidden');
+            document.getElementById('loading-text').textContent = '🤖 AI Teacher is preparing your lesson...';
+
+            // Fetch enriched content
+            const params = new URLSearchParams(window.location.search);
+            fetch(`/api/enrich?topic=${encodeURIComponent(topic)}&grade=${params.get('grade') || '3'}&subject=${params.get('subject') || 'Science'}`)
+                .then(r => r.json())
+                .then(data => {
+                    buildContent(topic, data);
+                    startStream(topic);
+                })
+                .catch(() => startStream(topic));
+        }
+
+        function buildContent(topic, data) {
+            document.getElementById('loading-section').classList.add('hidden');
+            document.getElementById('results-section').classList.remove('hidden');
+
+            // Topic header
+            const emojis = { 'math': '📐', 'science': '🔬', 'history': '🏛️', 'geography': '🌍', 'english': '📖', 'computer': '💻' };
+            const params = new URLSearchParams(window.location.search);
+            const subject = params.get('subject') || 'Science';
+            let emoji = '📚';
+            for (const [k, v] of Object.entries(emojis)) { if (subject.toLowerCase().includes(k)) { emoji = v; break; } }
+            document.getElementById('topic-emoji').textContent = emoji;
+            document.getElementById('topic-title').textContent = topic;
+
+            // Fun facts
+            const facts = data.fun_facts && data.fun_facts.length > 0 ? data.fun_facts : [
+                `Learning about ${topic} makes your brain stronger! 💪`,
+                `Did you know? ${topic} is used in everyday life! 🌟`,
+                `Exploring ${topic} opens up new worlds of knowledge! 🌍`
+            ];
+            document.getElementById('funfacts-section').classList.remove('hidden');
+            const fc = document.getElementById('funfacts-container');
+            fc.innerHTML = '';
+            facts.slice(0, 3).forEach((f, i) => {
+                const emojis2 = ['✨', '🌟', '💡'];
+                fc.innerHTML += `<div class="flex items-start gap-3 bg-yellow-100 rounded-2xl p-3 border-2 border-yellow-200">
+                    <span class="text-2xl">${emojis2[i % 3]}</span>
+                    <p class="font-bold text-gray-700">${f}</p>
+                </div>`;
+            });
+
+            // Images
+            if (data.images && data.images.length > 0) {
+                document.getElementById('gallery-section').classList.remove('hidden');
+                const gc = document.getElementById('gallery-container');
+                gc.innerHTML = '';
+                data.images.slice(0, 4).forEach(img => {
+                    const url = img.thumbnail_url || img.image_url || img.url;
+                    if (url) {
+                        gc.innerHTML += `<div class="flex-shrink-0 w-48 h-36 bg-gray-100 rounded-2xl border-3 border-teal-300 overflow-hidden">
+                            <img src="${url}" alt="${img.title || ''}" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\\'flex items-center justify-center h-full text-gray-400\\'>📷</div>'">
+                        </div>`;
+                    }
+                });
+            }
+        }
+
+        function startStream(topic) {
+            const params = new URLSearchParams(window.location.search);
+            const grade = params.get('grade') || '3';
+            const subject = params.get('subject') || 'Science';
+            const url = `/api/learn/stream?grade=${grade}&subject=${encodeURIComponent(subject)}&topic=${encodeURIComponent(topic)}&mode=initial`;
+
+            if (eventSource) eventSource.close();
+            eventSource = new EventSource(url);
+
+            document.getElementById('loading-section').classList.add('hidden');
+            document.getElementById('results-section').classList.remove('hidden');
+
+            const ca = document.getElementById('content-area');
+            ca.innerHTML = '<div class="text-center text-gray-400 py-4"><div class="text-3xl mb-2 pulse">🤔</div><p>Thinking...</p></div>';
+
+            eventSource.onmessage = (e) => {
+                try {
+                    const d = JSON.parse(e.data);
+                    if (d.done) {
+                        eventSource.close();
+                        document.getElementById('more-btn').classList.remove('hidden');
+                        return;
+                    }
+                    if (d.text) {
+                        currentContent += d.text;
+                        // Simple markdown rendering
+                        let html = currentContent
+                            .replace(/### (.+)/g, '<h3>$1</h3>')
+                            .replace(/## (.+)/g, '<h2>$1</h2>')
+                            .replace(/# (.+)/g, '<h1>$1</h1>')
+                            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                            .replace(/\n/g, '<br>');
+                        ca.innerHTML = html;
+                        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                    }
+                } catch(err) {}
+            };
+
+            eventSource.onerror = () => {
+                eventSource.close();
+                document.getElementById('more-btn').classList.remove('hidden');
+            };
+
+            // Fetch quiz in background
+            fetch(`/api/quiz?topic=${encodeURIComponent(topic)}&subject=${encodeURIComponent(subject)}`)
+                .then(r => r.json())
+                .then(data => {
+                    if (data.questions && data.questions.length > 0) {
+                        buildQuiz(data.questions);
+                    }
+                })
+                .catch(() => {});
+        }
+
+        function buildQuiz(questions) {
+            document.getElementById('quiz-section').classList.remove('hidden');
+            const qc = document.getElementById('quiz-container');
+            qc.innerHTML = '';
+            questions.forEach((q, idx) => {
+                const answers = q.options || [];
+                const correct = q.correct_answer || '';
+                let html = `<div class="bg-white rounded-2xl p-4 border-2 border-green-200 shadow-sm">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="font-bold text-green-600">🎯 Q${idx+1}</span>
+                    </div>
+                    <p class="font-bold text-gray-700 mb-3">${q.question}</p>
+                    <div class="space-y-2">`;
+                answers.forEach((opt, oi) => {
+                    html += `<button onclick="checkAnswer(this, '${correct.replace(/'/g, "\\'")}', '${opt.replace(/'/g, "\\'")}')" class="w-full text-left px-4 py-3 bg-white border-2 border-green-300 rounded-xl font-semibold text-gray-700 hover:bg-green-50 hover:border-green-400 transition-all">${String.fromCharCode(65+oi)}. ${opt}</button>`;
+                });
+                html += `</div><div class="feedback mt-2 hidden"></div></div>`;
+                qc.innerHTML += html;
+            });
+        }
+
+        function checkAnswer(btn, correct, selected) {
+            if (btn.disabled) return;
+            const parent = btn.closest('.space-y-2').parentElement;
+            const btns = parent.querySelectorAll('button');
+            const fb = parent.querySelector('.feedback');
+            
+            btns.forEach(b => {
+                b.disabled = true;
+                const text = b.textContent.substring(3).trim();
+                if (text === correct) {
+                    b.className = 'w-full text-left px-4 py-3 bg-green-500 text-white border-2 border-green-600 rounded-xl font-bold transition-all';
+                } else if (b === btn) {
+                    b.className = 'w-full text-left px-4 py-3 bg-red-400 text-white border-2 border-red-500 rounded-xl font-bold transition-all';
+                } else {
+                    b.className = 'w-full text-left px-4 py-3 bg-gray-100 text-gray-400 border-2 border-gray-200 rounded-xl font-semibold transition-all';
+                }
+            });
+            
+            fb.classList.remove('hidden');
+            if (selected === correct) {
+                fb.innerHTML = '<div class="p-3 bg-green-100 text-green-700 rounded-xl font-bold mt-2">✅ Correct! Great job! 🌟</div>';
+            } else {
+                fb.innerHTML = `<div class="p-3 bg-red-100 text-red-700 rounded-xl font-bold mt-2">❌ The answer was: ${correct}</div>`;
+            }
+        }
+
+        function loadMore() {
+            const topic = document.getElementById('topic-input').value.trim();
+            if (!topic) return;
+            document.getElementById('more-btn').classList.add('hidden');
+            document.getElementById('loading-section').classList.remove('hidden');
+            document.getElementById('loading-text').textContent = '🤔 Thinking deeper...';
+
+            const params = new URLSearchParams(window.location.search);
+            const grade = params.get('grade') || '3';
+            const subject = params.get('subject') || 'Science';
+            const url = `/api/learn/stream?grade=${grade}&subject=${encodeURIComponent(subject)}&topic=${encodeURIComponent(topic)}&mode=more&previous=${encodeURIComponent(currentContent)}`;
+
+            if (eventSource) eventSource.close();
+            eventSource = new EventSource(url);
+
+            currentContent += '<hr class="my-4 border-2 border-dashed border-yellow-300">';
+
+            eventSource.onmessage = (e) => {
+                try {
+                    const d = JSON.parse(e.data);
+                    if (d.done) {
+                        eventSource.close();
+                        document.getElementById('more-btn').classList.remove('hidden');
+                        document.getElementById('loading-section').classList.add('hidden');
+                        return;
+                    }
+                    if (d.text) {
+                        currentContent += d.text;
+                        let html = currentContent
+                            .replace(/### (.+)/g, '<h3>$1</h3>')
+                            .replace(/## (.+)/g, '<h2>$1</h2>')
+                            .replace(/# (.+)/g, '<h1>$1</h1>')
+                            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                            .replace(/\n/g, '<br>');
+                        document.getElementById('content-area').innerHTML = html;
+                        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                    }
+                } catch(err) {}
+            };
+
+            eventSource.onerror = () => {
+                eventSource.close();
+                document.getElementById('more-btn').classList.remove('hidden');
+                document.getElementById('loading-section').classList.add('hidden');
+            };
+        }
+
+        // Enter key support
+        document.getElementById('topic-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') startLearning(); });
+    </script>
+</body>
+</html>

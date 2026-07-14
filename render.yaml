@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: kids-education-app
+    env: python
+    buildCommand: pip install -r requirements-web.txt
+    startCommand: gunicorn app.web_app:app --workers 2 --worker-class gevent --bind 0.0.0.0:$PORT
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: PYTHON_VERSION
+        value: 3.9.18

@@ -58,7 +58,7 @@ class AdminPanel(BaseWindow):
 
         # Header
         header_layout = QHBoxLayout()
-        title = QLabel("⚙️ Admin Panel - Question Paper Generator")
+        title = QLabel("⚙️ Admin Panel")
         title.setFont(self.get_title_font())
         header_layout.addWidget(title)
         
@@ -70,89 +70,146 @@ class AdminPanel(BaseWindow):
         header_layout.addWidget(logout_btn)
         main_layout.addLayout(header_layout)
 
-        # Separator
-        separator = QLabel()
-        separator.setStyleSheet("border-bottom: 2px solid #CCCCCC;")
-        main_layout.addWidget(separator)
+        # Tabs
+        tabs = QTabWidget()
+        tabs.addTab(self.create_generation_tab(), "Generate Questions")
+        tabs.addTab(self.create_prompts_tab(), "Custom Prompts")
+        main_layout.addWidget(tabs)
 
-        # Form layout
-        form_layout = QVBoxLayout()
-        form_layout.setSpacing(15)
+        central_widget.setLayout(main_layout)
+
+    def create_generation_tab(self) -> QWidget:
+        """Create the question generation tab"""
+        tab = QWidget()
+        layout = QVBoxLayout()
+        layout.setSpacing(15)
+        layout.setContentsMargins(20, 20, 20, 20)
 
         # Grade Selection
         grade_label = QLabel("Select Grade Level:")
         grade_label.setFont(self.get_subheader_font())
-        grade_label.setStyleSheet("color: #333333; font-weight: bold;")
-        form_layout.addWidget(grade_label)
+        layout.addWidget(grade_label)
         
         self.grade_combo = QComboBox()
         self.grade_combo.addItems(GRADES)
         self.grade_combo.setStyleSheet(self.get_input_style())
-        self.grade_combo.setMinimumHeight(50)
-        self.grade_combo.setFont(self.get_normal_font())
-        form_layout.addWidget(self.grade_combo)
+        layout.addWidget(self.grade_combo)
 
         # Subject Selection
         subject_label = QLabel("Select Subject:")
         subject_label.setFont(self.get_subheader_font())
-        subject_label.setStyleSheet("color: #333333; font-weight: bold;")
-        form_layout.addWidget(subject_label)
+        layout.addWidget(subject_label)
         
         self.subject_combo = QComboBox()
         self.subject_combo.addItems(SUBJECTS)
         self.subject_combo.setStyleSheet(self.get_input_style())
-        self.subject_combo.setMinimumHeight(50)
-        self.subject_combo.setFont(self.get_normal_font())
-        form_layout.addWidget(self.subject_combo)
+        layout.addWidget(self.subject_combo)
 
         # Topic Input
         topic_label = QLabel("Enter Topic Name:")
         topic_label.setFont(self.get_subheader_font())
-        topic_label.setStyleSheet("color: #333333; font-weight: bold;")
-        form_layout.addWidget(topic_label)
+        layout.addWidget(topic_label)
         
         self.topic_input = QLineEdit()
-        self.topic_input.setPlaceholderText("e.g., Algebra, Photosynthesis, Forces and Motion")
+        self.topic_input.setPlaceholderText("e.g., Algebra, Photosynthesis")
         self.topic_input.setStyleSheet(self.get_input_style())
-        self.topic_input.setMinimumHeight(50)
-        self.topic_input.setFont(self.get_normal_font())
-        form_layout.addWidget(self.topic_input)
+        layout.addWidget(self.topic_input)
 
-        main_layout.addLayout(form_layout)
+        layout.addSpacing(20)
 
         # Generate Button
-        generate_btn = QPushButton("🚀 Generate 10 Question Papers")
+        generate_btn = QPushButton("🚀 Generate Question Pool")
         generate_btn.setFont(self.get_header_font())
         generate_btn.setStyleSheet(self.get_button_style())
         generate_btn.setMinimumHeight(55)
         generate_btn.clicked.connect(self.generate_papers)
-        main_layout.addWidget(generate_btn)
+        layout.addWidget(generate_btn)
 
-        # Status/Log area
+        # Log
         log_label = QLabel("Generation Log:")
         log_label.setFont(self.get_subheader_font())
-        log_label.setStyleSheet("color: #333333; font-weight: bold;")
-        main_layout.addWidget(log_label)
+        layout.addWidget(log_label)
         
         self.log_text = QTextEdit()
         self.log_text.setReadOnly(True)
-        self.log_text.setStyleSheet("""
-            QTextEdit {
-                background-color: #F5F5F5;
-                border: 2px solid #E0E0E0;
-                border-radius: 8px;
-                padding: 12px;
-                font-family: 'Courier New', monospace;
-                font-size: 13px;
-                color: #333333;
-            }
-        """)
-        self.log_text.setMinimumHeight(220)
-        main_layout.addWidget(self.log_text)
+        self.log_text.setStyleSheet("background-color: #F5F5F5; border: 1px solid #CCC; padding: 10px;")
+        layout.addWidget(self.log_text)
 
-        main_layout.addStretch()
+        tab.setLayout(layout)
+        return tab
 
-        central_widget.setLayout(main_layout)
+    def create_prompts_tab(self) -> QWidget:
+        """Create the custom prompts tab"""
+        tab = QWidget()
+        layout = QVBoxLayout()
+        layout.setSpacing(15)
+        layout.setContentsMargins(20, 20, 20, 20)
+        
+        info = QLabel("Define custom prompts for specific topics to guide the AI generation.")
+        info.setFont(self.get_normal_font())
+        layout.addWidget(info)
+        
+        # Inputs for prompt
+        self.prompt_grade = QComboBox()
+        self.prompt_grade.addItems(GRADES)
+        layout.addWidget(QLabel("Grade:"))
+        layout.addWidget(self.prompt_grade)
+        
+        self.prompt_subject = QComboBox()
+        self.prompt_subject.addItems(SUBJECTS)
+        layout.addWidget(QLabel("Subject:"))
+        layout.addWidget(self.prompt_subject)
+        
+        self.prompt_topic = QLineEdit()
+        self.prompt_topic.setPlaceholderText("Topic Name")
+        layout.addWidget(QLabel("Topic:"))
+        layout.addWidget(self.prompt_topic)
+        
+        self.prompt_name = QLineEdit()
+        self.prompt_name.setPlaceholderText("Prompt Name (e.g., 'Hard Algebra Problems')")
+        layout.addWidget(QLabel("Prompt Name:"))
+        layout.addWidget(self.prompt_name)
+        
+        layout.addWidget(QLabel("Custom Prompt Instructions:"))
+        self.prompt_text = QTextEdit()
+        self.prompt_text.setPlaceholderText("Enter detailed instructions for the AI...")
+        layout.addWidget(self.prompt_text)
+        
+        save_btn = QPushButton("Save Custom Prompt")
+        save_btn.setStyleSheet(self.get_button_style())
+        save_btn.clicked.connect(self.save_custom_prompt)
+        layout.addWidget(save_btn)
+        
+        tab.setLayout(layout)
+        return tab
+
+    def save_custom_prompt(self):
+        """Save the custom prompt to DB"""
+        grade = self.prompt_grade.currentText()
+        subject = self.prompt_subject.currentText()
+        topic = self.prompt_topic.text().strip()
+        name = self.prompt_name.text().strip()
+        prompt = self.prompt_text.toPlainText().strip()
+        
+        if not topic or not name or not prompt:
+            QMessageBox.warning(self, "Error", "Please fill all fields")
+            return
+            
+        from services.db_prompt_service import DBPromptService
+        prompt_service = DBPromptService()
+        
+        # Admin ID is hardcoded to 1 for now (since we auto-created admin)
+        # In real app, get from auth service
+        admin_id = 1 
+        
+        try:
+            prompt_service.save_prompt(admin_id, grade, subject, topic, name, prompt)
+            QMessageBox.information(self, "Success", "Custom prompt saved successfully!")
+            self.prompt_topic.clear()
+            self.prompt_name.clear()
+            self.prompt_text.clear()
+        except Exception as e:
+            QMessageBox.critical(self, "Error", f"Failed to save prompt: {e}")
 
     def generate_papers(self):
         """Generate question papers"""
@@ -185,16 +242,12 @@ class AdminPanel(BaseWindow):
         """Handle generation completion"""
         self.log_text.append("\n" + "="*50)
         
-        if result["success"]:
-            self.log_text.append(f"✅ {result['message']}\n")
-            
-            for paper in result["papers"]:
-                self.log_text.append(f"  • Paper {paper['paper_number']}: Generated")
-            
-            QMessageBox.information(self, "Success", result["message"])
+        if result: # Result is list of papers or True/False depending on implementation
+             self.log_text.append(f"✅ Generation Complete!\n")
+             QMessageBox.information(self, "Success", "Questions generated and saved to database!")
         else:
-            self.log_text.append(f"❌ Error: {result['message']}\n")
-            QMessageBox.warning(self, "Generation Failed", result["message"])
+             self.log_text.append(f"❌ Generation Failed\n")
+             QMessageBox.warning(self, "Generation Failed", "Failed to generate questions.")
 
     def on_generation_error(self, error: str):
         """Handle generation errors"""

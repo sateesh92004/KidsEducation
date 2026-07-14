@@ -7,8 +7,7 @@ from PyQt6.QtCore import Qt
 from ui.login_screen import LoginScreen
 from ui.student_dashboard import StudentDashboard
 from ui.admin_panel import AdminPanel
-from utils.excel_handler import ExcelHandler
-
+from database.db_manager import db
 
 class KidsEducationApp:
     """Main Application Class"""
@@ -27,12 +26,12 @@ class KidsEducationApp:
         self.show_login_screen()
 
     def init_data(self):
-        """Initialize data files and folders"""
-        # Ensure all necessary Excel files and folders exist
-        ExcelHandler.ensure_data_folder()
-        ExcelHandler.init_users_excel()
-        ExcelHandler.init_test_results_excel()
-        print("✅ Data initialization complete")
+        """Initialize database"""
+        # Database is automatically initialized when imported, but we can double check
+        # or print stats
+        print("✅ Database system initialized")
+        stats = db.get_database_stats()
+        print(f"📊 Database Stats: {stats}")
 
     def show_login_screen(self):
         """Show login screen"""

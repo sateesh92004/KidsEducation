@@ -62,7 +62,8 @@ class ResultsScreen(BaseWindow):
                 border: none;
             }
         """)
-        score_frame.setMaximumHeight(180)  # Reasonable height, not half screen!
+        score_frame.setMaximumHeight(200)
+        score_frame.setMinimumHeight(150)
         score_layout = QHBoxLayout(score_frame)
         score_layout.setContentsMargins(30, 20, 30, 20)
         score_layout.setSpacing(40)
@@ -75,12 +76,13 @@ class ResultsScreen(BaseWindow):
         # Score percentage (large but reasonable)
         score_text = QLabel(f"{self.result['score_percentage']:.1f}%")
         score_font = QFont()
-        score_font.setFamily('Segoe UI')
-        score_font.setPointSize(48)  # Reduced from 72pt to 48pt
+        score_font.setFamily('Arial')
+        score_font.setPointSize(56)
         score_font.setBold(True)
         score_text.setFont(score_font)
-        score_text.setStyleSheet("color: #FFD700; margin: 0px;")
+        score_text.setStyleSheet("color: #FFD700; margin: 0px; padding: 10px;")
         score_text.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        score_text.setMinimumWidth(120)
         score_circle_layout.addWidget(score_text)
         
         score_label = QLabel("Your Score")
@@ -134,13 +136,20 @@ class ResultsScreen(BaseWindow):
         
         main_layout.addWidget(score_frame)
 
-        # Answer Review Section
+        # Answer Review Section with Navigation
+        review_layout = QHBoxLayout()
         review_label = QLabel("📝 Answer Review")
         review_label.setFont(self.get_subheader_font())
         review_label.setStyleSheet("color: #212F3D; margin-top: 10px;")
-        main_layout.addWidget(review_label)
+        review_layout.addWidget(review_label)
+        review_layout.addStretch()
+        self.review_counter = QLabel("")
+        self.review_counter.setFont(self.get_subheader_font())
+        self.review_counter.setStyleSheet("color: #4472C4; margin-top: 10px;")
+        review_layout.addWidget(self.review_counter)
+        main_layout.addLayout(review_layout)
 
-        # Scroll area for question reviews
+        # Scroll area for question reviews (ONE question at a time)
         scroll = QScrollArea()
         scroll.setWidgetResizable(True)
         scroll.setStyleSheet("""
@@ -165,147 +174,202 @@ class ResultsScreen(BaseWindow):
         self.results_layout.setSpacing(12)
         self.results_layout.setContentsMargins(0, 0, 0, 0)
         
-        # Add each question review
-        self.display_question_reviews()
+        # Initialize review index (will display after buttons are created)
+        self.current_review_index = 0
         
         self.results_layout.addStretch()
         scroll.setWidget(scroll_widget)
         main_layout.addWidget(scroll, 1)
 
+        # Navigation buttons for review
+        nav_review_layout = QHBoxLayout()
+        nav_review_layout.setSpacing(15)
+        
+        self.prev_review_btn = QPushButton("← Previous Question")
+        self.prev_review_btn.setStyleSheet(self.get_button_style())
+        self.prev_review_btn.setMinimumHeight(45)
+        self.prev_review_btn.setMinimumWidth(180)
+        self.prev_review_btn.clicked.connect(self.previous_review)
+        nav_review_layout.addWidget(self.prev_review_btn)
+        
+        nav_review_layout.addStretch()
+        
+        self.next_review_btn = QPushButton("Next Question →")
+        self.next_review_btn.setStyleSheet(self.get_button_style())
+        self.next_review_btn.setMinimumHeight(45)
+        self.next_review_btn.setMinimumWidth(180)
+        self.next_review_btn.clicked.connect(self.next_review)
+        nav_review_layout.addWidget(self.next_review_btn)
+        
+        main_layout.addLayout(nav_review_layout)
+        
+        # NOW display the first question (after buttons exist)
+        self.display_current_question_review()
+
         central_widget.setLayout(main_layout)
 
-    def display_question_reviews(self):
-        """Display detailed review for each question"""
-        for detail in self.result.get('details', []):
-            q_num = detail.get('question_number')
-            user_ans = detail.get('user_answer')
-            correct_ans = detail.get('correct_answer')
-            is_correct = detail.get('is_correct')
-            explanation = detail.get('explanation', '')
-            
-            # Find the question to get its text
-            question = None
-            for q in self.questions:
-                if q.get('question_number') == q_num:
-                    question = q
-                    break
-            
-            if not question:
-                continue
-            
-            # Create question card frame
-            card_frame = QFrame()
-            
-            # Set background color based on correctness
+    def display_current_question_review(self):
+        """Display current question review (one at a time)"""
+        # Clear previous review
+        while self.results_layout.count():
+            child = self.results_layout.takeAt(0)
+            if child.widget():
+                child.widget().deleteLater()
+        
+        # Update counter
+        total_questions = len(self.result.get('details', []))
+        self.review_counter.setText(f"Question {self.current_review_index + 1} of {total_questions}")
+        
+        details = self.result.get('details', [])
+        if self.current_review_index >= len(details):
+            return
+        
+        detail = details[self.current_review_index]
+        q_num = detail.get('question_number')
+        user_ans = detail.get('user_answer')
+        correct_ans = detail.get('correct_answer')
+        is_correct = detail.get('is_correct')
+        explanation = detail.get('explanation', '')
+        
+        # Find the question to get its text
+        question = None
+        for q in self.questions:
+            if q.get('question_number') == q_num:
+                question = q
+                break
+        
+        if not question:
+            return
+        
+        # Create question card frame
+        card_frame = QFrame()
+        
+        # Set background color based on correctness
+        if is_correct:
+            card_style = """
+                QFrame {
+                    background-color: #E8F5E9;
+                    border: 2px solid #70AD47;
+                    border-radius: 10px;
+                    padding: 15px;
+                }
+            """
+        else:
+            card_style = """
+                QFrame {
+                    background-color: #FFEBEE;
+                    border: 2px solid #E53935;
+                    border-radius: 10px;
+                    padding: 15px;
+                }
+            """
+        
+        card_frame.setStyleSheet(card_style)
+        card_layout = QVBoxLayout(card_frame)
+        card_layout.setSpacing(10)
+        card_layout.setContentsMargins(15, 12, 15, 12)
+
+        # Question number and status
+        header_layout = QHBoxLayout()
+        
+        q_header = QLabel(f"Question {q_num}")
+        q_header.setFont(self.get_subheader_font())
+        q_header.setStyleSheet("color: #333333;")
+        header_layout.addWidget(q_header)
+        
+        header_layout.addStretch()
+        
+        if is_correct:
+            status = QLabel("✅ Correct")
+            status.setStyleSheet("color: #70AD47; font-weight: bold; font-size: 13px;")
+        else:
+            status = QLabel("❌ Incorrect")
+            status.setStyleSheet("color: #E53935; font-weight: bold; font-size: 13px;")
+        
+        header_layout.addWidget(status)
+        card_layout.addLayout(header_layout)
+
+        # Question text
+        q_text = QLabel(question.get('question_text', ''))
+        q_text.setFont(self.get_normal_font())
+        q_text.setWordWrap(True)
+        q_text.setStyleSheet("font-weight: bold; color: #212F3D; margin: 5px 0px;")
+        card_layout.addWidget(q_text)
+
+        # Separator
+        sep = QLabel()
+        sep.setStyleSheet("border-bottom: 1px solid #CCCCCC; margin: 5px 0px;")
+        sep.setMinimumHeight(1)
+        card_layout.addWidget(sep)
+
+        # User's answer
+        user_ans_label = QLabel("Your Answer:")
+        user_ans_label.setFont(self.get_normal_font())
+        user_ans_label.setStyleSheet("color: #333333; font-weight: bold;")
+        card_layout.addWidget(user_ans_label)
+        
+        if user_ans:
+            options = question.get('options', {})
+            user_ans_text = options.get(user_ans, "Not answered")
+            user_ans_display = QLabel(f"{user_ans}) {user_ans_text}")
+            user_ans_display.setFont(self.get_normal_font())
+            user_ans_display.setWordWrap(True)
             if is_correct:
-                card_style = """
-                    QFrame {
-                        background-color: #E8F5E9;
-                        border: 2px solid #70AD47;
-                        border-radius: 10px;
-                        padding: 15px;
-                    }
-                """
+                user_ans_display.setStyleSheet("color: #70AD47; font-weight: bold; padding: 8px; background-color: white; border-radius: 5px; margin-left: 10px;")
             else:
-                card_style = """
-                    QFrame {
-                        background-color: #FFEBEE;
-                        border: 2px solid #E53935;
-                        border-radius: 10px;
-                        padding: 15px;
-                    }
-                """
+                user_ans_display.setStyleSheet("color: #E53935; font-weight: bold; padding: 8px; background-color: white; border-radius: 5px; margin-left: 10px;")
+            card_layout.addWidget(user_ans_display)
+        else:
+            not_answered = QLabel("Not answered")
+            not_answered.setFont(self.get_normal_font())
+            not_answered.setStyleSheet("color: #999999; font-style: italic; padding: 8px; margin-left: 10px;")
+            card_layout.addWidget(not_answered)
+
+        # Correct answer (if user got it wrong)
+        if not is_correct:
+            correct_label = QLabel("Correct Answer:")
+            correct_label.setFont(self.get_normal_font())
+            correct_label.setStyleSheet("color: #70AD47; font-weight: bold; margin-top: 10px;")
+            card_layout.addWidget(correct_label)
             
-            card_frame.setStyleSheet(card_style)
-            card_layout = QVBoxLayout(card_frame)
-            card_layout.setSpacing(10)
-            card_layout.setContentsMargins(15, 12, 15, 12)
+            options = question.get('options', {})
+            correct_ans_text = options.get(correct_ans, "Unknown")
+            correct_ans_display = QLabel(f"{correct_ans}) {correct_ans_text}")
+            correct_ans_display.setFont(self.get_normal_font())
+            correct_ans_display.setWordWrap(True)
+            correct_ans_display.setStyleSheet("color: #70AD47; font-weight: bold; padding: 8px; background-color: white; border-radius: 5px; margin-left: 10px;")
+            card_layout.addWidget(correct_ans_display)
 
-            # Question number and status
-            header_layout = QHBoxLayout()
+        # Explanation
+        if explanation:
+            exp_label = QLabel("Explanation:")
+            exp_label.setFont(self.get_normal_font())
+            exp_label.setStyleSheet("color: #333333; font-weight: bold; margin-top: 10px;")
+            card_layout.addWidget(exp_label)
             
-            q_header = QLabel(f"Question {q_num}")
-            q_header.setFont(self.get_subheader_font())
-            q_header.setStyleSheet("color: #333333;")
-            header_layout.addWidget(q_header)
-            
-            header_layout.addStretch()
-            
-            if is_correct:
-                status = QLabel("✅ Correct")
-                status.setStyleSheet("color: #70AD47; font-weight: bold; font-size: 13px;")
-            else:
-                status = QLabel("❌ Incorrect")
-                status.setStyleSheet("color: #E53935; font-weight: bold; font-size: 13px;")
-            
-            header_layout.addWidget(status)
-            card_layout.addLayout(header_layout)
+            exp_text = QLabel(explanation)
+            exp_text.setFont(self.get_normal_font())
+            exp_text.setWordWrap(True)
+            exp_text.setStyleSheet("color: #555555; padding: 8px; background-color: white; border-radius: 5px; margin-left: 10px;")
+            card_layout.addWidget(exp_text)
 
-            # Question text
-            q_text = QLabel(question.get('question_text', ''))
-            q_text.setFont(self.get_normal_font())
-            q_text.setWordWrap(True)
-            q_text.setStyleSheet("font-weight: bold; color: #212F3D; margin: 5px 0px;")
-            card_layout.addWidget(q_text)
-
-            # Separator
-            sep = QLabel()
-            sep.setStyleSheet("border-bottom: 1px solid #CCCCCC; margin: 5px 0px;")
-            sep.setMinimumHeight(1)
-            card_layout.addWidget(sep)
-
-            # User's answer
-            user_ans_label = QLabel("Your Answer:")
-            user_ans_label.setFont(self.get_normal_font())
-            user_ans_label.setStyleSheet("color: #333333; font-weight: bold;")
-            card_layout.addWidget(user_ans_label)
-            
-            if user_ans:
-                options = question.get('options', {})
-                user_ans_text = options.get(user_ans, "Not answered")
-                user_ans_display = QLabel(f"{user_ans}) {user_ans_text}")
-                user_ans_display.setFont(self.get_normal_font())
-                user_ans_display.setWordWrap(True)
-                if is_correct:
-                    user_ans_display.setStyleSheet("color: #70AD47; font-weight: bold; padding: 8px; background-color: white; border-radius: 5px; margin-left: 10px;")
-                else:
-                    user_ans_display.setStyleSheet("color: #E53935; font-weight: bold; padding: 8px; background-color: white; border-radius: 5px; margin-left: 10px;")
-                card_layout.addWidget(user_ans_display)
-            else:
-                not_answered = QLabel("Not answered")
-                not_answered.setFont(self.get_normal_font())
-                not_answered.setStyleSheet("color: #999999; font-style: italic; padding: 8px; margin-left: 10px;")
-                card_layout.addWidget(not_answered)
-
-            # Correct answer (if user got it wrong)
-            if not is_correct:
-                correct_label = QLabel("Correct Answer:")
-                correct_label.setFont(self.get_normal_font())
-                correct_label.setStyleSheet("color: #70AD47; font-weight: bold; margin-top: 10px;")
-                card_layout.addWidget(correct_label)
-                
-                options = question.get('options', {})
-                correct_ans_text = options.get(correct_ans, "Unknown")
-                correct_ans_display = QLabel(f"{correct_ans}) {correct_ans_text}")
-                correct_ans_display.setFont(self.get_normal_font())
-                correct_ans_display.setWordWrap(True)
-                correct_ans_display.setStyleSheet("color: #70AD47; font-weight: bold; padding: 8px; background-color: white; border-radius: 5px; margin-left: 10px;")
-                card_layout.addWidget(correct_ans_display)
-
-            # Explanation
-            if explanation:
-                exp_label = QLabel("Explanation:")
-                exp_label.setFont(self.get_normal_font())
-                exp_label.setStyleSheet("color: #333333; font-weight: bold; margin-top: 10px;")
-                card_layout.addWidget(exp_label)
-                
-                exp_text = QLabel(explanation)
-                exp_text.setFont(self.get_normal_font())
-                exp_text.setWordWrap(True)
-                exp_text.setStyleSheet("color: #555555; padding: 8px; background-color: white; border-radius: 5px; margin-left: 10px;")
-                card_layout.addWidget(exp_text)
-
-            self.results_layout.addWidget(card_frame)
+        self.results_layout.addWidget(card_frame)
+        
+        # Update button states
+        self.prev_review_btn.setEnabled(self.current_review_index > 0)
+        self.next_review_btn.setEnabled(self.current_review_index < len(details) - 1)
+        
+    def next_review(self):
+        """Go to next question review"""
+        if self.current_review_index < len(self.result.get('details', [])) - 1:
+            self.current_review_index += 1
+            self.display_current_question_review()
+    
+    def previous_review(self):
+        """Go to previous question review"""
+        if self.current_review_index > 0:
+            self.current_review_index -= 1
+            self.display_current_question_review()
 
     def go_back(self):
         """Go back to dashboard"""

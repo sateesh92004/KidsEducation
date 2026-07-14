@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌟 Kids Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Nunito', sans-serif; }
+        .font-fredoka { font-family: 'Fredoka One', cursive; }
+        .bounce-in { animation: bounceIn 0.5s ease-out; }
+        @keyframes bounceIn { 0% { transform: scale(0.3); opacity: 0; } 50% { transform: scale(1.05); } 70% { transform: scale(0.9); } 100% { transform: scale(1); opacity: 1; } }
+        .float { animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 flex items-center justify-center p-4">
+    <div class="w-full max-w-md bounce-in">
+        <!-- Logo -->
+        <div class="text-center mb-6">
+            <div class="text-6xl float mb-2">🚀</div>
+            <h1 class="text-3xl font-fredoka text-white drop-shadow-lg">My Learning Portal</h1>
+            <p class="text-white/80 font-semibold text-sm">Your Adventure Starts Here!</p>
+        </div>
+
+        <!-- Login Card -->
+        <div class="bg-white rounded-3xl shadow-2xl p-8 border-4 border-yellow-300">
+            <!-- Tabs -->
+            <div class="flex mb-6 bg-yellow-50 rounded-2xl p-1 border-2 border-yellow-200">
+                <button onclick="switchTab('login')" id="tab-login" class="flex-1 py-3 rounded-xl font-bold text-sm transition-all bg-yellow-400 text-gray-800 shadow-md">🔑 Login</button>
+                <button onclick="switchTab('register')" id="tab-register" class="flex-1 py-3 rounded-xl font-bold text-sm transition-all text-gray-500 hover:text-gray-700">✨ Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="form-login">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-600 mb-1">👤 Username</label>
+                        <input id="login-username" type="text" class="w-full px-4 py-3 border-3 border-blue-300 rounded-2xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none font-bold text-lg" placeholder="Enter username">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-600 mb-1">🔒 Password</label>
+                        <input id="login-password" type="password" class="w-full px-4 py-3 border-3 border-blue-300 rounded-2xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none font-bold text-lg" placeholder="Enter password">
+                    </div>
+                    <button onclick="doLogin()" class="w-full py-4 bg-gradient-to-r from-orange-400 to-orange-500 text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all border-b-4 border-orange-600">
+                        🚀 Let's Go!
+                    </button>
+                </div>
+                <div id="login-error" class="mt-4 text-red-500 text-sm font-bold text-center hidden"></div>
+            </div>
+
+            <!-- Register Form -->
+            <div id="form-register" class="hidden">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-600 mb-1">👤 Choose Username</label>
+                        <input id="reg-username" type="text" class="w-full px-4 py-3 border-3 border-green-300 rounded-2xl focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none font-bold text-lg" placeholder="Pick a cool username">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-600 mb-1">🔒 Choose Password</label>
+                        <input id="reg-password" type="password" class="w-full px-4 py-3 border-3 border-green-300 rounded-2xl focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none font-bold text-lg" placeholder="At least 4 characters">
+                    </div>
+                    <button onclick="doRegister()" class="w-full py-4 bg-gradient-to-r from-green-400 to-green-500 text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all border-b-4 border-green-600">
+                        ✨ Create Account
+                    </button>
+                </div>
+                <div id="reg-error" class="mt-4 text-red-500 text-sm font-bold text-center hidden"></div>
+                <div id="reg-success" class="mt-4 text-green-500 text-sm font-bold text-center hidden"></div>
+            </div>
+        </div>
+
+        <!-- Mascots -->
+        <div class="flex justify-center gap-4 mt-6 text-3xl">
+            <span class="float" style="animation-delay: 0s">🦉</span>
+            <span class="float" style="animation-delay: 0.5s">🤖</span>
+            <span class="float" style="animation-delay: 1s">🐱</span>
+            <span class="float" style="animation-delay: 1.5s">🦊</span>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tab) {
+            document.getElementById('form-login').classList.toggle('hidden', tab !== 'login');
+            document.getElementById('form-register').classList.toggle('hidden', tab !== 'register');
+            document.getElementById('tab-login').className = tab === 'login' 
+                ? 'flex-1 py-3 rounded-xl font-bold text-sm bg-yellow-400 text-gray-800 shadow-md'
+                : 'flex-1 py-3 rounded-xl font-bold text-sm text-gray-500 hover:text-gray-700';
+            document.getElementById('tab-register').className = tab === 'register'
+                ? 'flex-1 py-3 rounded-xl font-bold text-sm bg-yellow-400 text-gray-800 shadow-md'
+                : 'flex-1 py-3 rounded-xl font-bold text-sm text-gray-500 hover:text-gray-700';
+            document.getElementById('login-error').classList.add('hidden');
+            document.getElementById('reg-error').classList.add('hidden');
+            document.getElementById('reg-success').classList.add('hidden');
+        }
+
+        async function doLogin() {
+            const username = document.getElementById('login-username').value.trim();
+            const password = document.getElementById('login-password').value;
+            const err = document.getElementById('login-error');
+            err.classList.add('hidden');
+            if (!username || !password) { err.textContent = 'Please fill all fields'; err.classList.remove('hidden'); return; }
+            try {
+                const r = await fetch('/api/login', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({username, password}) });
+                const d = await r.json();
+                if (d.success) { window.location.href = '/dashboard'; }
+                else { err.textContent = d.message; err.classList.remove('hidden'); }
+            } catch(e) { err.textContent = 'Connection error'; err.classList.remove('hidden'); }
+        }
+
+        async function doRegister() {
+            const username = document.getElementById('reg-username').value.trim();
+            const password = document.getElementById('reg-password').value;
+            const err = document.getElementById('reg-error');
+            const suc = document.getElementById('reg-success');
+            err.classList.add('hidden'); suc.classList.add('hidden');
+            if (!username || !password) { err.textContent = 'Please fill all fields'; err.classList.remove('hidden'); return; }
+            if (password.length < 4) { err.textContent = 'Password must be at least 4 characters'; err.classList.remove('hidden'); return; }
+            try {
+                const r = await fetch('/api/register', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({username, password}) });
+                const d = await r.json();
+                if (d.success) { suc.textContent = '✅ Account created! Switch to Login tab'; suc.classList.remove('hidden'); }
+                else { err.textContent = d.message; err.classList.remove('hidden'); }
+            } catch(e) { err.textContent = 'Connection error'; err.classList.remove('hidden'); }
+        }
+
+        // Enter key support
+        document.addEventListener('keydown', (e) => { if (e.key === 'Enter') { if (!document.getElementById('form-login').classList.contains('hidden')) doLogin(); else doRegister(); }});
+    </script>
+</body>
+</html>
